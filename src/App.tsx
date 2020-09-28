@@ -30,30 +30,48 @@ import '@ionic/react/css/display.css';
 
 /* Theme variables */
 import './theme/variables.css';
+import './app.css';
+
+/* tabs pages */
 import { Weather } from './pages/weather';
 import { WorldTime } from './pages/WorldTime';
 import { Alarm } from './pages/Alarm';
+import { CurrentWeatherDetails } from './pages/CurrentWeatherDetails';
+import { WeeklyWeatherDetails } from './pages/WeeklyWeatherDetails';
 
 const App: React.FC = () => (
   <IonApp>
     <IonReactRouter>
       <IonTabs>
         <IonRouterOutlet>
-          <Route path='/tab1' component={Weather} exact={true} />
-          <Route path='/tab2' component={WorldTime} exact={true} />
-          <Route path='/tab3' component={Alarm} />
-          <Route path='/' render={() => <Redirect to='/tab1' />} exact={true} />
+          <Route path='/Weather' component={Weather} exact={true} />
+          <Route path='/WorldTime' component={WorldTime} exact={true} />
+          <Route path='/Alarm' component={Alarm} />
+          <Route
+            path='/CurrentWeatherDetails'
+            component={CurrentWeatherDetails}
+            exact={true}
+          />
+          <Route
+            path='/WeeklyWeatherDetails'
+            component={WeeklyWeatherDetails}
+          />
+          <Route
+            path='/'
+            render={() => <Redirect to='/Weather' />}
+            exact={true}
+          />
         </IonRouterOutlet>
         <IonTabBar slot='bottom'>
-          <IonTabButton tab='tab1' href='/tab1'>
+          <IonTabButton tab='tab1' href='/Weather'>
             <IonIcon icon={sunny} />
             <IonLabel>weather</IonLabel>
           </IonTabButton>
-          <IonTabButton tab='tab2' href='/tab2'>
+          <IonTabButton tab='tab2' href='/WorldTime'>
             <IonIcon icon={time} />
             <IonLabel>world time</IonLabel>
           </IonTabButton>
-          <IonTabButton tab='tab3' href='/tab3'>
+          <IonTabButton tab='tab3' href='/Alarm'>
             <IonIcon icon={alarm} />
             <IonLabel>alarm</IonLabel>
           </IonTabButton>
