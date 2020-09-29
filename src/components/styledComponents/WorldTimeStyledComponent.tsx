@@ -20,6 +20,7 @@ export const TimeZone = styled.div`
 export const WorldTimeContainer = styled.div`
   display: flex;
   justify-content: space-between;
+  align-items: center;
 `;
 
 export const WorldTimeLocaltionInfo = styled.div`

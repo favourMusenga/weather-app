@@ -18,7 +18,7 @@ export const WorldTimeList: React.FC<WorldTimeListProps> = () => {
       <IonHeader>
         <IonToolbar>
           <IonTitle>world time</IonTitle>
-          <IonButtons>
+          <IonButtons slot='start'>
             <IonBackButton defaultHref='/WorldTime' />
           </IonButtons>
         </IonToolbar>

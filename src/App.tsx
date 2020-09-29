@@ -40,6 +40,7 @@ import { CurrentWeatherDetails } from './pages/CurrentWeatherDetails';
 import { WeeklyWeatherDetails } from './pages/WeeklyWeatherDetails';
 import { WorldTimeList } from './pages/WorldTimeList';
 import { AddNewTimeZone } from './pages/AddNewTimeZone';
+import { AddAlarm } from './pages/AddAlarm';
 
 const App: React.FC = () => (
   <IonApp>
@@ -60,6 +61,7 @@ const App: React.FC = () => (
             component={WeeklyWeatherDetails}
           />
           <Route path='/WorldTimeList' component={WorldTimeList} />
+          <Route path='/AddAlarm' component={AddAlarm} />
           <Route
             path='/'
             render={() => <Redirect to='/Weather' />}

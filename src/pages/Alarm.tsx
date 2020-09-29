@@ -6,6 +6,8 @@ import {
   IonTitle,
   IonToolbar,
 } from '@ionic/react';
+import FloatBtn from '../components/shared/FloatBtn';
+import { AlarmCard } from '../components/AlarmComponenents/AlarmCard';
 
 interface AlarmProps {}
 export const Alarm: React.FC<AlarmProps> = () => {
@@ -17,7 +19,8 @@ export const Alarm: React.FC<AlarmProps> = () => {
         </IonToolbar>
       </IonHeader>
       <IonContent className='ion-padding'>
-        <h1>Alarm</h1>
+        <AlarmCard />
+        <FloatBtn link='AddAlarm' />
       </IonContent>
     </IonApp>
   );
