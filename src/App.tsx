@@ -41,25 +41,28 @@ import { WeeklyWeatherDetails } from './pages/WeeklyWeatherDetails';
 import { WorldTimeList } from './pages/WorldTimeList';
 import { AddNewTimeZone } from './pages/AddNewTimeZone';
 import { AddAlarm } from './pages/AddAlarm';
+import WeatherContextProvider from './contexts/WeatherContext';
 
 const App: React.FC = () => (
   <IonApp>
     <IonReactRouter>
       <IonTabs>
         <IonRouterOutlet>
-          <Route path='/Weather' component={Weather} exact={true} />
+          <WeatherContextProvider>
+            <Route path='/Weather' component={Weather} exact={true} />
+            <Route
+              path='/WeeklyWeatherDetails'
+              component={WeeklyWeatherDetails}
+            />
+            <Route
+              path='/CurrentWeatherDetails'
+              component={CurrentWeatherDetails}
+              exact={true}
+            />
+          </WeatherContextProvider>
           <Route path='/WorldTime' component={WorldTime} exact={true} />
           <Route path='/Alarm' component={Alarm} />
-          <Route
-            path='/CurrentWeatherDetails'
-            component={CurrentWeatherDetails}
-            exact={true}
-          />
           <Route path='/AddNewTimeZone' component={AddNewTimeZone} />
-          <Route
-            path='/WeeklyWeatherDetails'
-            component={WeeklyWeatherDetails}
-          />
           <Route path='/WorldTimeList' component={WorldTimeList} />
           <Route path='/AddAlarm' component={AddAlarm} />
           <Route

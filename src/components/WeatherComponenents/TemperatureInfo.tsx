@@ -39,7 +39,7 @@ export const TemperatureInfo: React.FC<TemperatureInfoProps> = () => {
             <UnitValue>26.6</UnitValue>
           </LeftSideTab>
         </OtherWeatherInfo>
-        <IonList style={{ maxWidth: '100%' }}>
+        <IonList style={{ width: '100%' }}>
           <IonListHeader style={{ color: '#555' }}>
             more information:
           </IonListHeader>
