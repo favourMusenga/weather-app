@@ -7,12 +7,14 @@ import {
   IonTitle,
   IonToolbar,
 } from '@ionic/react';
-import React from 'react';
+import React, { useContext } from 'react';
 import FloatBtn from '../components/shared/FloatBtn';
 import { WorldTimeCard } from '../components/worldTimeComponenents/WorldTimeCard';
+import { WorldTimeContext } from '../contexts/WorldTimeContext';
 
 interface WorldTimeListProps {}
 export const WorldTimeList: React.FC<WorldTimeListProps> = () => {
+  const { userWorldTimeList, dispatch } = useContext(WorldTimeContext);
   return (
     <IonApp>
       <IonHeader>
@@ -24,8 +26,9 @@ export const WorldTimeList: React.FC<WorldTimeListProps> = () => {
         </IonToolbar>
       </IonHeader>
       <IonContent className='ion-padding'>
-        <WorldTimeCard />
-        <WorldTimeCard />
+        {userWorldTimeList.map((worldTime) => (
+          <WorldTimeCard key={worldTime.id} worldTime={worldTime} />
+        ))}
         <FloatBtn link='AddNewTimeZone' />
       </IonContent>
     </IonApp>

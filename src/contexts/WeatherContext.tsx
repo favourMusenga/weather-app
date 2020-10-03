@@ -1,16 +1,20 @@
 import React, { createContext } from 'react';
+export const WeatherContext = createContext<{
+  weeklyWeatherInfo: {};
+  currentWeatherinfo: {};
+  hourlyWeatherInfo: {};
+}>({ weeklyWeatherInfo: {}, currentWeatherinfo: {}, hourlyWeatherInfo: {} });
 
-interface WeatherContextProps {}
-export const WeatherContext = createContext<
-  | { weeklyWeatherInfo: {}; currentWeatherinfo: {}; hourlyWeatherInfo: {} }
-  | string
->('');
-
-const WeatherContextProvider: React.FC<WeatherContextProps> = ({
-  children,
-}) => {
+const WeatherContextProvider: React.FC = ({ children }) => {
   return (
-    <WeatherContext.Provider value='favour'>{children}</WeatherContext.Provider>
+    <WeatherContext.Provider
+      value={{
+        weeklyWeatherInfo: {},
+        currentWeatherinfo: {},
+        hourlyWeatherInfo: {},
+      }}>
+      {children}
+    </WeatherContext.Provider>
   );
 };
 

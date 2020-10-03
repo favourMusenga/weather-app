@@ -24,7 +24,6 @@ import {
   LabelText,
   UnitValue,
 } from '../components/styledComponents/WeatherStyledComponent';
-import { WeatherContext } from '../contexts/WeatherContext';
 
 interface CurrentWeatherDetailsProps {}
 export const CurrentWeatherDetails: React.FC<CurrentWeatherDetailsProps> = () => {

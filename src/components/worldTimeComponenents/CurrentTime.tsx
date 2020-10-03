@@ -21,21 +21,22 @@ import {
 
 interface CurrentTimeProps {}
 export const CurrentTime: React.FC<CurrentTimeProps> = () => {
-  const [time, setTime] = useState<string>(
-    DateTime.local().toFormat('hh:mm a')
-  );
-  const [dateInfo] = useState(
+  const [time, setTime] = useState<string>(DateTime.local().toFormat('HH:mm'));
+  const [dateInfo, setDateInfo] = useState(
     DateTime.local().toLocaleString(DateTime.DATE_MED_WITH_WEEKDAY)
   );
   const timeZone = DateTime.local().toFormat('ZZZZZ');
   useEffect(() => {
     let isMounted = true;
     if (isMounted) {
-      setInterval(() => setTime(DateTime.local().toFormat('hh:mm a')), 1000);
+      setInterval(() => setTime(DateTime.local().toFormat('HH:mm')), 1000);
+      setDateInfo(
+        DateTime.local().toLocaleString(DateTime.DATE_MED_WITH_WEEKDAY)
+      );
     }
     return () => {
-      isMounted = false;
       clearInterval();
+      isMounted = false;
     };
   }, [time]);
   return (

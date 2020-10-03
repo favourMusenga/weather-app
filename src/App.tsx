@@ -42,6 +42,7 @@ import { WorldTimeList } from './pages/WorldTimeList';
 import { AddNewTimeZone } from './pages/AddNewTimeZone';
 import { AddAlarm } from './pages/AddAlarm';
 import WeatherContextProvider from './contexts/WeatherContext';
+import { WorldTimeContextProvider } from './contexts/WorldTimeContext';
 
 const App: React.FC = () => (
   <IonApp>
@@ -49,27 +50,30 @@ const App: React.FC = () => (
       <IonTabs>
         <IonRouterOutlet>
           <WeatherContextProvider>
-            <Route path='/Weather' component={Weather} exact={true} />
-            <Route
-              path='/WeeklyWeatherDetails'
-              component={WeeklyWeatherDetails}
-            />
-            <Route
-              path='/CurrentWeatherDetails'
-              component={CurrentWeatherDetails}
-              exact={true}
-            />
+            <WorldTimeContextProvider>
+              <Route path='/Weather' component={Weather} exact={true} />
+              <Route
+                path='/WeeklyWeatherDetails'
+                component={WeeklyWeatherDetails}
+              />
+              <Route
+                path='/CurrentWeatherDetails'
+                component={CurrentWeatherDetails}
+                exact={true}
+              />
+
+              <Route path='/WorldTime' component={WorldTime} exact={true} />
+              <Route path='/Alarm' component={Alarm} />
+              <Route path='/AddNewTimeZone' component={AddNewTimeZone} />
+              <Route path='/WorldTimeList' component={WorldTimeList} />
+              <Route path='/AddAlarm' component={AddAlarm} />
+              <Route
+                path='/'
+                render={() => <Redirect to='/Weather' />}
+                exact={true}
+              />
+            </WorldTimeContextProvider>
           </WeatherContextProvider>
-          <Route path='/WorldTime' component={WorldTime} exact={true} />
-          <Route path='/Alarm' component={Alarm} />
-          <Route path='/AddNewTimeZone' component={AddNewTimeZone} />
-          <Route path='/WorldTimeList' component={WorldTimeList} />
-          <Route path='/AddAlarm' component={AddAlarm} />
-          <Route
-            path='/'
-            render={() => <Redirect to='/Weather' />}
-            exact={true}
-          />
         </IonRouterOutlet>
         <IonTabBar slot='bottom'>
           <IonTabButton tab='tab1' href='/Weather'>

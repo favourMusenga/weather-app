@@ -5,7 +5,6 @@ import {
   IonCardTitle,
 } from '@ionic/react';
 import React from 'react';
-import { WeatherContext } from '../../contexts/WeatherContext';
 import { DisplayOverviewWeatherInfo } from './DisplayOverviewWeatherInfo';
 
 interface CurrentWeatherInfoProps {}
