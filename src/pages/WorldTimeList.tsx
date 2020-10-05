@@ -27,7 +27,11 @@ export const WorldTimeList: React.FC<WorldTimeListProps> = () => {
       </IonHeader>
       <IonContent className='ion-padding'>
         {userWorldTimeList.map((worldTime) => (
-          <WorldTimeCard key={worldTime.id} worldTime={worldTime} />
+          <WorldTimeCard
+            key={worldTime.id}
+            worldTime={worldTime}
+            dispatch={dispatch}
+          />
         ))}
         <FloatBtn link='AddNewTimeZone' />
       </IonContent>

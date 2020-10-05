@@ -30,7 +30,7 @@ function reducer(state: ListArrayType, action: WorldTimeAction) {
         },
       ];
     case TYPES.DELETE:
-      return state.filter((prevState) => prevState.id === action.payload.id);
+      return state.filter((prevState) => prevState.id !== action.payload.id);
     default:
       return state;
   }
@@ -51,6 +51,14 @@ export const useLocalStorage = () => {
         ) {
           InitialValues.forEach((InitialValue: any) => {
             dispatch({ type: TYPES.ADD, payload: InitialValue });
+          });
+        } else if (
+          InitialValues.length > worldTimeList.length &&
+          worldTimeList.length > 0
+        ) {
+          await Storage.set({
+            key: KEY,
+            value: JSON.stringify(worldTimeList),
           });
         } else if (InitialValues.length === worldTimeList.length) {
           return null;
