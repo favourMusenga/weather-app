@@ -33,14 +33,14 @@ import './theme/variables.css';
 import './app.css';
 
 /* tabs pages */
-import { Weather } from './pages/weather';
-import { WorldTime } from './pages/WorldTime';
-import { Alarm } from './pages/Alarm';
-import { CurrentWeatherDetails } from './pages/CurrentWeatherDetails';
-import { WeeklyWeatherDetails } from './pages/WeeklyWeatherDetails';
-import { WorldTimeList } from './pages/WorldTimeList';
-import { AddNewTimeZone } from './pages/AddNewTimeZone';
-import { AddAlarm } from './pages/AddAlarm';
+import { Weather } from './pages/weather/weather';
+import { WorldTime } from './pages/worldTime/WorldTime';
+import { Alarm } from './pages/alarm/Alarm';
+import { CurrentWeatherDetails } from './pages/weather/CurrentWeatherDetails';
+import { WeeklyWeatherDetails } from './pages/weather/WeeklyWeatherDetails';
+import { WorldTimeList } from './pages/worldTime/WorldTimeList';
+import { AddNewTimeZone } from './pages/weather/AddNewTimeZone';
+import { AddAlarm } from './pages/alarm/AddAlarm';
 import WeatherContextProvider from './contexts/WeatherContext';
 import { WorldTimeContextProvider } from './contexts/WorldTimeContext';
 

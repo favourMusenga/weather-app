@@ -12,7 +12,7 @@ import {
   IonToolbar,
 } from '@ionic/react';
 import React from 'react';
-import Accordin from '../components/Accordin';
+import Accordin from '../../components/Accordin';
 import {
   WeatherInfoContainer,
   CityName,
@@ -23,7 +23,7 @@ import {
   RightSideTab,
   LabelText,
   UnitValue,
-} from '../components/styledComponents/WeatherStyledComponent';
+} from '../../components/styledComponents/WeatherStyledComponent';
 
 interface CurrentWeatherDetailsProps {}
 export const CurrentWeatherDetails: React.FC<CurrentWeatherDetailsProps> = () => {

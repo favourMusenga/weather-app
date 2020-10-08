@@ -1,0 +1,1216 @@
+[33mcommit b8a4fcb6589e4809c443e5e5ef65c534ab2a2d07[m
+Author: favour musenga <favourmusenga@gmail.com>
+Date:   Sat Oct 3 20:32:55 2020 +0200
+
+    added functionality to  world time tab
+
+[1mdiff --git a/package-lock.json b/package-lock.json[m
+[1mindex 9ea067c..b501015 100644[m
+[1m--- a/package-lock.json[m
+[1m+++ b/package-lock.json[m
+[36m@@ -2039,6 +2039,15 @@[m
+         "csstype": "^3.0.2"[m
+       }[m
+     },[m
+[32m+[m[32m    "@types/react-autosuggest": {[m
+[32m+[m[32m      "version": "10.0.0",[m
+[32m+[m[32m      "resolved": "https://registry.npmjs.org/@types/react-autosuggest/-/react-autosuggest-10.0.0.tgz",[m
+[32m+[m[32m      "integrity": "sha512-lcu3L3158I8DlgicRpyIuYzIc+E70RgXcVI8uJ+nw5JnAlhNht7dE1hJ0Q0x2A5VVBMOi5dcCQACqi5wWfm8ow==",[m
+[32m+[m[32m      "dev": true,[m
+[32m+[m[32m      "requires": {[m
+[32m+[m[32m        "@types/react": "*"[m
+[32m+[m[32m      }[m
+[32m+[m[32m    },[m
+     "@types/react-dom": {[m
+       "version": "16.9.8",[m
+       "resolved": "https://registry.npmjs.org/@types/react-dom/-/react-dom-16.9.8.tgz",[m
+[36m@@ -2201,6 +2210,12 @@[m
+         }[m
+       }[m
+     },[m
+[32m+[m[32m    "@types/uuid": {[m
+[32m+[m[32m      "version": "8.3.0",[m
+[32m+[m[32m      "resolved": "https://registry.npmjs.org/@types/uuid/-/uuid-8.3.0.tgz",[m
+[32m+[m[32m      "integrity": "sha512-eQ9qFW/fhfGJF8WKHGEHZEyVWfZxrT+6CLIJGBcZPfxUh/+BnEj+UCGYMlr9qZuX/2AltsvwrGqp0LhEW8D0zQ==",[m
+[32m+[m[32m      "dev": true[m
+[32m+[m[32m    },[m
+     "@types/yargs": {[m
+       "version": "13.0.10",[m
+       "resolved": "https://registry.npmjs.org/@types/yargs/-/yargs-13.0.10.tgz",[m
+[36m@@ -5286,6 +5301,11 @@[m
+         "es6-symbol": "^3.1.1"[m
+       }[m
+     },[m
+[32m+[m[32m    "es6-promise": {[m
+[32m+[m[32m      "version": "4.2.8",[m
+[32m+[m[32m      "resolved": "https://registry.npmjs.org/es6-promise/-/es6-promise-4.2.8.tgz",[m
+[32m+[m[32m      "integrity": "sha512-HJDGx5daxeIvxdBxvG2cb9g4tEvwIk3i8+nhX0yGrYmZUzbkdg8QbDevheDB8gd0//uPj4c1EQua8Q+MViT0/w=="[m
+[32m+[m[32m    },[m
+     "es6-symbol": {[m
+       "version": "3.1.3",[m
+       "resolved": "https://registry.npmjs.org/es6-symbol/-/es6-symbol-3.1.3.tgz",[m
+[36m@@ -11223,6 +11243,29 @@[m
+         "whatwg-fetch": "^3.0.0"[m
+       }[m
+     },[m
+[32m+[m[32m    "react-autosuggest": {[m
+[32m+[m[32m      "version": "10.0.2",[m
+[32m+[m[32m      "resolved": "https://registry.npmjs.org/react-autosuggest/-/react-autosuggest-10.0.2.tgz",[m
+[32m+[m[32m      "integrity": "sha512-ouI0RJDSgM1FBfK0ZmLC3qUqithIwPVTpnC4JQW4DeId3mH2JnZmkNNDKImhcMrxLbSQRpV/DfTLn0uCs4b27w==",[m
+[32m+[m[32m      "requires": {[m
+[32m+[m[32m        "es6-promise": "^4.2.8",[m
+[32m+[m[32m        "prop-types": "^15.7.2",[m
+[32m+[m[32m        "react-autowhatever": "^10.2.1",[m
+[32m+[m[32m        "react-themeable": "^1.1.0",[m
+[32m+[m[32m        "section-iterator": "^2.0.0",[m
+[32m+[m[32m        "shallow-equal": "^1.2.1"[m
+[32m+[m[32m      }[m
+[32m+[m[32m    },[m
+[32m+[m[32m    "react-autowhatever": {[m
+[32m+[m[32m      "version": "10.2.1",[m
+[32m+[m[32m      "resolved": "https://registry.npmjs.org/react-autowhatever/-/react-autowhatever-10.2.1.tgz",[m
+[32m+[m[32m      "integrity": "sha512-5gQyoETyBH6GmuW1N1J81CuoAV+Djeg66DEo03xiZOl3WOwJHBP5LisKUvCGOakjrXU4M3hcIvCIqMBYGUmqOA==",[m
+[32m+[m[32m      "requires": {[m
+[32m+[m[32m        "prop-types": "^15.5.8",[m
+[32m+[m[32m        "react-themeable": "^1.1.0",[m
+[32m+[m[32m        "section-iterator": "^2.0.0"[m
+[32m+[m[32m      }[m
+[32m+[m[32m    },[m
+     "react-collapsible": {[m
+       "version": "2.8.1",[m
+       "resolved": "https://registry.npmjs.org/react-collapsible/-/react-collapsible-2.8.1.tgz",[m
+[36m@@ -11561,6 +11604,21 @@[m
+         "workbox-webpack-plugin": "4.3.1"[m
+       }[m
+     },[m
+[32m+[m[32m    "react-themeable": {[m
+[32m+[m[32m      "version": "1.1.0",[m
+[32m+[m[32m      "resolved": "https://registry.npmjs.org/react-themeable/-/react-themeable-1.1.0.tgz",[m
+[32m+[m[32m      "integrity": "sha1-fURm3ZsrX6dQWHJ4JenxUro3mg4=",[m
+[32m+[m[32m      "requires": {[m
+[32m+[m[32m        "object-assign": "^3.0.0"[m
+[32m+[m[32m      },[m
+[32m+[m[32m      "dependencies": {[m
+[32m+[m[32m        "object-assign": {[m
+[32m+[m[32m          "version": "3.0.0",[m
+[32m+[m[32m          "resolved": "https://registry.npmjs.org/object-assign/-/object-assign-3.0.0.tgz",[m
+[32m+[m[32m          "integrity": "sha1-m+3VygiXlJvKR+f/QIBi1Un1h/I="[m
+[32m+[m[32m        }[m
+[32m+[m[32m      }[m
+[32m+[m[32m    },[m
+     "read-pkg": {[m
+       "version": "3.0.0",[m
+       "resolved": "https://registry.npmjs.org/read-pkg/-/read-pkg-3.0.0.tgz",[m
+[36m@@ -12178,6 +12236,11 @@[m
+         "ajv-keywords": "^3.5.2"[m
+       }[m
+     },[m
+[32m+[m[32m    "section-iterator": {[m
+[32m+[m[32m      "version": "2.0.0",[m
+[32m+[m[32m      "resolved": "https://registry.npmjs.org/section-iterator/-/section-iterator-2.0.0.tgz",[m
+[32m+[m[32m      "integrity": "sha1-v0RNev7rlK1Dw5rS+yYVFifMuio="[m
+[32m+[m[32m    },[m
+     "select-hose": {[m
+       "version": "2.0.0",[m
+       "resolved": "https://registry.npmjs.org/select-hose/-/select-hose-2.0.0.tgz",[m
+[36m@@ -12383,6 +12446,11 @@[m
+         }[m
+       }[m
+     },[m
+[32m+[m[32m    "shallow-equal": {[m
+[32m+[m[32m      "version": "1.2.1",[m
+[32m+[m[32m      "resolved": "https://registry.npmjs.org/shallow-equal/-/shallow-equal-1.2.1.tgz",[m
+[32m+[m[32m      "integrity": "sha512-S4vJDjHHMBaiZuT9NPb616CSmLf618jawtv3sufLl6ivK8WocjAo58cXwbRV1cgqxH0Qbv+iUt6m05eqEa2IRA=="[m
+[32m+[m[32m    },[m
+     "shallowequal": {[m
+       "version": "1.1.0",[m
+       "resolved": "https://registry.npmjs.org/shallowequal/-/shallowequal-1.1.0.tgz",[m
+[1mdiff --git a/package.json b/package.json[m
+[1mindex 096cd6a..dcd661b 100644[m
+[1m--- a/package.json[m
+[1m+++ b/package.json[m
+[36m@@ -24,6 +24,7 @@[m
+     "ionicons": "^5.0.0",[m
+     "luxon": "^1.25.0",[m
+     "react": "^16.13.0",[m
+[32m+[m[32m    "react-autosuggest": "^10.0.2",[m
+     "react-collapsible": "^2.8.1",[m
+     "react-dom": "^16.13.0",[m
+     "react-places-autocomplete": "^7.3.0",[m
+[36m@@ -62,7 +63,9 @@[m
+   "devDependencies": {[m
+     "@capacitor/cli": "2.4.0",[m
+     "@types/luxon": "^1.25.0",[m
+[32m+[m[32m    "@types/react-autosuggest": "^10.0.0",[m
+     "@types/react-query": "^1.1.2",[m
+[31m-    "@types/styled-components": "^5.1.3"[m
+[32m+[m[32m    "@types/styled-components": "^5.1.3",[m
+[32m+[m[32m    "@types/uuid": "^8.3.0"[m
+   }[m
+ }[m
+[1mdiff --git a/src/App.tsx b/src/App.tsx[m
+[1mindex 4ad7e68..32a1802 100644[m
+[1m--- a/src/App.tsx[m
+[1m+++ b/src/App.tsx[m
+[36m@@ -42,6 +42,7 @@[m [mimport { WorldTimeList } from './pages/WorldTimeList';[m
+ import { AddNewTimeZone } from './pages/AddNewTimeZone';[m
+ import { AddAlarm } from './pages/AddAlarm';[m
+ import WeatherContextProvider from './contexts/WeatherContext';[m
+[32m+[m[32mimport { WorldTimeContextProvider } from './contexts/WorldTimeContext';[m
+ [m
+ const App: React.FC = () => ([m
+   <IonApp>[m
+[36m@@ -49,27 +50,30 @@[m [mconst App: React.FC = () => ([m
+       <IonTabs>[m
+         <IonRouterOutlet>[m
+           <WeatherContextProvider>[m
+[31m-            <Route path='/Weather' component={Weather} exact={true} />[m
+[31m-            <Route[m
+[31m-              path='/WeeklyWeatherDetails'[m
+[31m-              component={WeeklyWeatherDetails}[m
+[31m-            />[m
+[31m-            <Route[m
+[31m-              path='/CurrentWeatherDetails'[m
+[31m-              component={CurrentWeatherDetails}[m
+[31m-              exact={true}[m
+[31m-            />[m
+[32m+[m[32m            <WorldTimeContextProvider>[m
+[32m+[m[32m              <Route path='/Weather' component={Weather} exact={true} />[m
+[32m+[m[32m              <Route[m
+[32m+[m[32m                path='/WeeklyWeatherDetails'[m
+[32m+[m[32m                component={WeeklyWeatherDetails}[m
+[32m+[m[32m              />[m
+[32m+[m[32m              <Route[m
+[32m+[m[32m                path='/CurrentWeatherDetails'[m
+[32m+[m[32m                component={CurrentWeatherDetails}[m
+[32m+[m[32m                exact={true}[m
+[32m+[m[32m              />[m
+[32m+[m
+[32m+[m[32m              <Route path='/WorldTime' component={WorldTime} exact={true} />[m
+[32m+[m[32m              <Route path='/Alarm' component={Alarm} />[m
+[32m+[m[32m              <Route path='/AddNewTimeZone' component={AddNewTimeZone} />[m
+[32m+[m[32m              <Route path='/WorldTimeList' component={WorldTimeList} />[m
+[32m+[m[32m              <Route path='/AddAlarm' component={AddAlarm} />[m
+[32m+[m[32m              <Route[m
+[32m+[m[32m                path='/'[m
+[32m+[m[32m                render={() => <Redirect to='/Weather' />}[m
+[32m+[m[32m                exact={true}[m
+[32m+[m[32m              />[m
+[32m+[m[32m            </WorldTimeContextProvider>[m
+           </WeatherContextProvider>[m
+[31m-          <Route path='/WorldTime' component={WorldTime} exact={true} />[m
+[31m-          <Route path='/Alarm' component={Alarm} />[m
+[31m-          <Route path='/AddNewTimeZone' component={AddNewTimeZone} />[m
+[31m-          <Route path='/WorldTimeList' component={WorldTimeList} />[m
+[31m-          <Route path='/AddAlarm' component={AddAlarm} />[m
+[31m-          <Route[m
+[31m-            path='/'[m
+[31m-            render={() => <Redirect to='/Weather' />}[m
+[31m-            exact={true}[m
+[31m-          />[m
+         </IonRouterOutlet>[m
+         <IonTabBar slot='bottom'>[m
+           <IonTabButton tab='tab1' href='/Weather'>[m
+[1mdiff --git a/src/assets/timeZoneList.ts b/src/assets/timeZoneList.ts[m
+[1mnew file mode 100644[m
+[1mindex 0000000..38886da[m
+[1m--- /dev/null[m
+[1m+++ b/src/assets/timeZoneList.ts[m
+[36m@@ -0,0 +1,389 @@[m
+[32m+[m[32mexport const TIMEZONE_LIST = [[m
+[32m+[m[32m  'Africa/Abidjan',[m
+[32m+[m[32m  'Africa/Accra',[m
+[32m+[m[32m  'Africa/Algiers',[m
+[32m+[m[32m  'Africa/Bissau',[m
+[32m+[m[32m  'Africa/Cairo',[m
+[32m+[m[32m  'Africa/Casablanca',[m
+[32m+[m[32m  'Africa/Ceuta',[m
+[32m+[m[32m  'Africa/El_Aaiun',[m
+[32m+[m[32m  'Africa/Johannesburg',[m
+[32m+[m[32m  'Africa/Juba',[m
+[32m+[m[32m  'Africa/Khartoum',[m
+[32m+[m[32m  'Africa/Lagos',[m
+[32m+[m[32m  'Africa/Maputo',[m
+[32m+[m[32m  'Africa/Monrovia',[m
+[32m+[m[32m  'Africa/Nairobi',[m
+[32m+[m[32m  'Africa/Ndjamena',[m
+[32m+[m[32m  'Africa/Sao_Tome',[m
+[32m+[m[32m  'Africa/Tripoli',[m
+[32m+[m[32m  'Africa/Tunis',[m
+[32m+[m[32m  'Africa/Windhoek',[m
+[32m+[m[32m  'America/Adak',[m
+[32m+[m[32m  'America/Anchorage',[m
+[32m+[m[32m  'America/Araguaina',[m
+[32m+[m[32m  'America/Argentina/Buenos_Aires',[m
+[32m+[m[32m  'America/Argentina/Catamarca',[m
+[32m+[m[32m  'America/Argentina/Cordoba',[m
+[32m+[m[32m  'America/Argentina/Jujuy',[m
+[32m+[m[32m  'America/Argentina/La_Rioja',[m
+[32m+[m[32m  'America/Argentina/Mendoza',[m
+[32m+[m[32m  'America/Argentina/Rio_Gallegos',[m
+[32m+[m[32m  'America/Argentina/Salta',[m
+[32m+[m[32m  'America/Argentina/San_Juan',[m
+[32m+[m[32m  'America/Argentina/San_Luis',[m
+[32m+[m[32m  'America/Argentina/Tucuman',[m
+[32m+[m[32m  'America/Argentina/Ushuaia',[m
+[32m+[m[32m  'America/Asuncion',[m
+[32m+[m[32m  'America/Atikokan',[m
+[32m+[m[32m  'America/Bahia',[m
+[32m+[m[32m  'America/Bahia_Banderas',[m
+[32m+[m[32m  'America/Barbados',[m
+[32m+[m[32m  'America/Belem',[m
+[32m+[m[32m  'America/Belize',[m
+[32m+[m[32m  'America/Blanc-Sablon',[m
+[32m+[m[32m  'America/Boa_Vista',[m
+[32m+[m[32m  'America/Bogota',[m
+[32m+[m[32m  'America/Boise',[m
+[32m+[m[32m  'America/Cambridge_Bay',[m
+[32m+[m[32m  'America/Campo_Grande',[m
+[32m+[m[32m  'America/Cancun',[m
+[32m+[m[32m  'America/Caracas',[m
+[32m+[m[32m  'America/Cayenne',[m
+[32m+[m[32m  'America/Chicago',[m
+[32m+[m[32m  'America/Chihuahua',[m
+[32m+[m[32m  'America/Costa_Rica',[m
+[32m+[m[32m  'America/Creston',[m
+[32m+[m[32m  'America/Cuiaba',[m
+[32m+[m[32m  'America/Curacao',[m
+[32m+[m[32m  'America/Danmarkshavn',[m
+[32m+[m[32m  'America/Dawson',[m
+[32m+[m[32m  'America/Dawson_Creek',[m
+[32m+[m[32m  'America/Denver',[m
+[32m+[m[32m  'America/Detroit',[m
+[32m+[m[32m  'America/Edmonton',[m
+[32m+[m[32m  'America/Eirunepe',[m
+[32m+[m[32m  'America/El_Salvador',[m
+[32m+[m[32m  'America/Fort_Nelson',[m
+[32m+[m[32m  'America/Fortaleza',[m
+[32m+[m[32m  'America/Glace_Bay',[m
+[32m+[m[32m  'America/Goose_Bay',[m
+[32m+[m[32m  'America/Grand_Turk',[m
+[32m+[m[32m  'America/Guatemala',[m
+[32m+[m[32m  'America/Guayaquil',[m
+[32m+[m[32m  'America/Guyana',[m
+[32m+[m[32m  'America/Halifax',[m
+[32m+[m[32m  'America/Havana',[m
+[32m+[m[32m  'America/Hermosillo',[m
+[32m+[m[32m  'America/Indiana/Indianapolis',[m
+[32m+[m[32m  'America/Indiana/Knox',[m
+[32m+[m[32m  'America/Indiana/Marengo',[m
+[32m+[m[32m  'America/Indiana/Petersburg',[m
+[32m+[m[32m  'America/Indiana/Tell_City',[m
+[32m+[m[32m  'America/Indiana/Vevay',[m
+[32m+[m[32m  'America/Indiana/Vincennes',[m
+[32m+[m[32m  'America/Indiana/Winamac',[m
+[32m+[m[32m  'America/Inuvik',[m
+[32m+[m[32m  'America/Iqaluit',[m
+[32m+[m[32m  'America/Jamaica',[m
+[32m+[m[32m  'America/Juneau',[m
+[32m+[m[32m  'America/Kentucky/Louisville',[m
+[32m+[m[32m  'America/Kentucky/Monticello',[m
+[32m+[m[32m  'America/La_Paz',[m
+[32m+[m[32m  'America/Lima',[m
+[32m+[m[32m  'America/Los_Angeles',[m
+[32m+[m[32m  'America/Maceio',[m
+[32m+[m[32m  'America/Managua',[m
+[32m+[m[32m  'America/Manaus',[m
+[32m+[m[32m  'America/Martinique',[m
+[32m+[m[32m  'America/Matamoros',[m
+[32m+[m[32m  'America/Mazatlan',[m
+[32m+[m[32m  'America/Menominee',[m
+[32m+[m[32m  'America/Merida',[m
+[32m+[m[32m  'America/Metlakatla',[m
+[32m+[m[32m  'America/Mexico_City',[m
+[32m+[m[32m  'America/Miquelon',[m
+[32m+[m[32m  'America/Moncton',[m
+[32m+[m[32m  'America/Monterrey',[m
+[32m+[m[32m  'America/Montevideo',[m
+[32m+[m[32m  'America/Nassau',[m
+[32m+[m[32m  'America/New_York',[m
+[32m+[m[32m  'America/Nipigon',[m
+[32m+[m[32m  'America/Nome',[m
+[32m+[m[32m  'America/Noronha',[m
+[32m+[m[32m  'America/North_Dakota/Beulah',[m
+[32m+[m[32m  'America/North_Dakota/Center',[m
+[32m+[m[32m  'America/North_Dakota/New_Salem',[m
+[32m+[m[32m  'America/Nuuk',[m
+[32m+[m[32m  'America/Ojinaga',[m
+[32m+[m[32m  'America/Panama',[m
+[32m+[m[32m  'America/Pangnirtung',[m
+[32m+[m[32m  'America/Paramaribo',[m
+[32m+[m[32m  'America/Phoenix',[m
+[32m+[m[32m  'America/Port-au-Prince',[m
+[32m+[m[32m  'America/Port_of_Spain',[m
+[32m+[m[32m  'America/Porto_Velho',[m
+[32m+[m[32m  'America/Puerto_Rico',[m
+[32m+[m[32m  'America/Punta_Arenas',[m
+[32m+[m[32m  'America/Rainy_River',[m
+[32m+[m[32m  'America/Rankin_Inlet',[m
+[32m+[m[32m  'America/Recife',[m
+[32m+[m[32m  'America/Regina',[m
+[32m+[m[32m  'America/Resolute',[m
+[32m+[m[32m  'America/Rio_Branco',[m
+[32m+[m[32m  'America/Santarem',[m
+[32m+[m[32m  'America/Santiago',[m
+[32m+[m[32m  'America/Santo_Domingo',[m
+[32m+[m[32m  'America/Sao_Paulo',[m
+[32m+[m[32m  'America/Scoresbysund',[m
+[32m+[m[32m  'America/Sitka',[m
+[32m+[m[32m  'America/St_Johns',[m
+[32m+[m[32m  'America/Swift_Current',[m
+[32m+[m[32m  'America/Tegucigalpa',[m
+[32m+[m[32m  'America/Thule',[m
+[32m+[m[32m  'America/Thunder_Bay',[m
+[32m+[m[32m  'America/Tijuana',[m
+[32m+[m[32m  'America/Toronto',[m
+[32m+[m[32m  'America/Vancouver',[m
+[32m+[m[32m  'America/Whitehorse',[m
+[32m+[m[32m  'America/Winnipeg',[m
+[32m+[m[32m  'America/Yakutat',[m
+[32m+[m[32m  'America/Yellowknife',[m
+[32m+[m[32m  'Antarctica/Casey',[m
+[32m+[m[32m  'Antarctica/Davis',[m
+[32m+[m[32m  'Antarctica/DumontDUrville',[m
+[32m+[m[32m  'Antarctica/Macquarie',[m
+[32m+[m[32m  'Antarctica/Mawson',[m
+[32m+[m[32m  'Antarctica/Palmer',[m
+[32m+[m[32m  'Antarctica/Rothera',[m
+[32m+[m[32m  'Antarctica/Syowa',[m
+[32m+[m[32m  'Antarctica/Troll',[m
+[32m+[m[32m  'Antarctica/Vostok',[m
+[32m+[m[32m  'Asia/Almaty',[m
+[32m+[m[32m  'Asia/Amman',[m
+[32m+[m[32m  'Asia/Anadyr',[m
+[32m+[m[32m  'Asia/Aqtau',[m
+[32m+[m[32m  'Asia/Aqtobe',[m
+[32m+[m[32m  'Asia/Ashgabat',[m
+[32m+[m[32m  'Asia/Atyrau',[m
+[32m+[m[32m  'Asia/Baghdad',[m
+[32m+[m[32m  'Asia/Baku',[m
+[32m+[m[32m  'Asia/Bangkok',[m
+[32m+[m[32m  'Asia/Barnaul',[m
+[32m+[m[32m  'Asia/Beirut',[m
+[32m+[m[32m  'Asia/Bishkek',[m
+[32m+[m[32m  'Asia/Brunei',[m
+[32m+[m[32m  'Asia/Chita',[m
+[32m+[m[32m  'Asia/Choibalsan',[m
+[32m+[m[32m  'Asia/Colombo',[m
+[32m+[m[32m  'Asia/Damascus',[m
+[32m+[m[32m  'Asia/Dhaka',[m
+[32m+[m[32m  'Asia/Dili',[m
+[32m+[m[32m  'Asia/Dubai',[m
+[32m+[m[32m  'Asia/Dushanbe',[m
+[32m+[m[32m  'Asia/Famagusta',[m
+[32m+[m[32m  'Asia/Gaza',[m
+[32m+[m[32m  'Asia/Hebron',[m
+[32m+[m[32m  'Asia/Ho_Chi_Minh',[m
+[32m+[m[32m  'Asia/Hong_Kong',[m
+[32m+[m[32m  'Asia/Hovd',[m
+[32m+[m[32m  'Asia/Irkutsk',[m
+[32m+[m[32m  'Asia/Jakarta',[m
+[32m+[m[32m  'Asia/Jayapura',[m
+[32m+[m[32m  'Asia/Jerusalem',[m
+[32m+[m[32m  'Asia/Kabul',[m
+[32m+[m[32m  'Asia/Kamchatka',[m
+[32m+[m[32m  'Asia/Karachi',[m
+[32m+[m[32m  'Asia/Kathmandu',[m
+[32m+[m[32m  'Asia/Khandyga',[m
+[32m+[m[32m  'Asia/Kolkata',[m
+[32m+[m[32m  'Asia/Krasnoyarsk',[m
+[32m+[m[32m  'Asia/Kuala_Lumpur',[m
+[32m+[m[32m  'Asia/Kuching',[m
+[32m+[m[32m  'Asia/Macau',[m
+[32m+[m[32m  'Asia/Magadan',[m
+[32m+[m[32m  'Asia/Makassar',[m
+[32m+[m[32m  'Asia/Manila',[m
+[32m+[m[32m  'Asia/Nicosia',[m
+[32m+[m[32m  'Asia/Novokuznetsk',[m
+[32m+[m[32m  'Asia/Novosibirsk',[m
+[32m+[m[32m  'Asia/Omsk',[m
+[32m+[m[32m  'Asia/Oral',[m
+[32m+[m[32m  'Asia/Pontianak',[m
+[32m+[m[32m  'Asia/Pyongyang',[m
+[32m+[m[32m  'Asia/Qatar',[m
+[32m+[m[32m  'Asia/Qostanay',[m
+[32m+[m[32m  'Asia/Qyzylorda',[m
+[32m+[m[32m  'Asia/Riyadh',[m
+[32m+[m[32m  'Asia/Sakhalin',[m
+[32m+[m[32m  'Asia/Samarkand',[m
+[32m+[m[32m  'Asia/Seoul',[m
+[32m+[m[32m  'Asia/Shanghai',[m
+[32m+[m[32m  'Asia/Singapore',[m
+[32m+[m[32m  'Asia/Srednekolymsk',[m
+[32m+[m[32m  'Asia/Taipei',[m
+[32m+[m[32m  'Asia/Tashkent',[m
+[32m+[m[32m  'Asia/Tbilisi',[m
+[32m+[m[32m  'Asia/Tehran',[m
+[32m+[m[32m  'Asia/Thimphu',[m
+[32m+[m[32m  'Asia/Tokyo',[m
+[32m+[m[32m  'Asia/Tomsk',[m
+[32m+[m[32m  'Asia/Ulaanbaatar',[m
+[32m+[m[32m  'Asia/Urumqi',[m
+[32m+[m[32m  'Asia/Ust-Nera',[m
+[32m+[m[32m  'Asia/Vladivostok',[m
+[32m+[m[32m  'Asia/Yakutsk',[m
+[32m+[m[32m  'Asia/Yangon',[m
+[32m+[m[32m  'Asia/Yekaterinburg',[m
+[32m+[m[32m  'Asia/Yerevan',[m
+[32m+[m[32m  'Atlantic/Azores',[m
+[32m+[m[32m  'Atlantic/Bermuda',[m
+[32m+[m[32m  'Atlantic/Canary',[m
+[32m+[m[32m  'Atlantic/Cape_Verde',[m
+[32m+[m[32m  'Atlantic/Faroe',[m
+[32m+[m[32m  'Atlantic/Madeira',[m
+[32m+[m[32m  'Atlantic/Reykjavik',[m
+[32m+[m[32m  'Atlantic/South_Georgia',[m
+[32m+[m[32m  'Atlantic/Stanley',[m
+[32m+[m[32m  'Australia/Adelaide',[m
+[32m+[m[32m  'Australia/Brisbane',[m
+[32m+[m[32m  'Australia/Broken_Hill',[m
+[32m+[m[32m  'Australia/Currie',[m
+[32m+[m[32m  'Australia/Darwin',[m
+[32m+[m[32m  'Australia/Eucla',[m
+[32m+[m[32m  'Australia/Hobart',[m
+[32m+[m[32m  'Australia/Lindeman',[m
+[32m+[m[32m  'Australia/Lord_Howe',[m
+[32m+[m[32m  'Australia/Melbourne',[m
+[32m+[m[32m  'Australia/Perth',[m
+[32m+[m[32m  'Australia/Sydney',[m
+[32m+[m[32m  'CET',[m
+[32m+[m[32m  'CST6CDT',[m
+[32m+[m[32m  'EET',[m
+[32m+[m[32m  'EST',[m
+[32m+[m[32m  'EST5EDT',[m
+[32m+[m[32m  'Etc/GMT',[m
+[32m+[m[32m  'Etc/GMT+1',[m
+[32m+[m[32m  'Etc/GMT+10',[m
+[32m+[m[32m  'Etc/GMT+11',[m
+[32m+[m[32m  'Etc/GMT+12',[m
+[32m+[m[32m  'Etc/GMT+2',[m
+[32m+[m[32m  'Etc/GMT+3',[m
+[32m+[m[32m  'Etc/GMT+4',[m
+[32m+[m[32m  'Etc/GMT+5',[m
+[32m+[m[32m  'Etc/GMT+6',[m
+[32m+[m[32m  'Etc/GMT+7',[m
+[32m+[m[32m  'Etc/GMT+8',[m
+[32m+[m[32m  'Etc/GMT+9',[m
+[32m+[m[32m  'Etc/GMT-1',[m
+[32m+[m[32m  'Etc/GMT-10',[m
+[32m+[m[32m  'Etc/GMT-11',[m
+[32m+[m[32m  'Etc/GMT-12',[m
+[32m+[m[32m  'Etc/GMT-13',[m
+[32m+[m[32m  'Etc/GMT-14',[m
+[32m+[m[32m  'Etc/GMT-2',[m
+[32m+[m[32m  'Etc/GMT-3',[m
+[32m+[m[32m  'Etc/GMT-4',[m
+[32m+[m[32m  'Etc/GMT-5',[m
+[32m+[m[32m  'Etc/GMT-6',[m
+[32m+[m[32m  'Etc/GMT-7',[m
+[32m+[m[32m  'Etc/GMT-8',[m
+[32m+[m[32m  'Etc/GMT-9',[m
+[32m+[m[32m  'Etc/UTC',[m
+[32m+[m[32m  'Europe/Amsterdam',[m
+[32m+[m[32m  'Europe/Andorra',[m
+[32m+[m[32m  'Europe/Astrakhan',[m
+[32m+[m[32m  'Europe/Athens',[m
+[32m+[m[32m  'Europe/Belgrade',[m
+[32m+[m[32m  'Europe/Berlin',[m
+[32m+[m[32m  'Europe/Brussels',[m
+[32m+[m[32m  'Europe/Bucharest',[m
+[32m+[m[32m  'Europe/Budapest',[m
+[32m+[m[32m  'Europe/Chisinau',[m
+[32m+[m[32m  'Europe/Copenhagen',[m
+[32m+[m[32m  'Europe/Dublin',[m
+[32m+[m[32m  'Europe/Gibraltar',[m
+[32m+[m[32m  'Europe/Helsinki',[m
+[32m+[m[32m  'Europe/Istanbul',[m
+[32m+[m[32m  'Europe/Kaliningrad',[m
+[32m+[m[32m  'Europe/Kiev',[m
+[32m+[m[32m  'Europe/Kirov',[m
+[32m+[m[32m  'Europe/Lisbon',[m
+[32m+[m[32m  'Europe/London',[m
+[32m+[m[32m  'Europe/Luxembourg',[m
+[32m+[m[32m  'Europe/Madrid',[m
+[32m+[m[32m  'Europe/Malta',[m
+[32m+[m[32m  'Europe/Minsk',[m
+[32m+[m[32m  'Europe/Monaco',[m
+[32m+[m[32m  'Europe/Moscow',[m
+[32m+[m[32m  'Europe/Oslo',[m
+[32m+[m[32m  'Europe/Paris',[m
+[32m+[m[32m  'Europe/Prague',[m
+[32m+[m[32m  'Europe/Riga',[m
+[32m+[m[32m  'Europe/Rome',[m
+[32m+[m[32m  'Europe/Samara',[m
+[32m+[m[32m  'Europe/Saratov',[m
+[32m+[m[32m  'Europe/Simferopol',[m
+[32m+[m[32m  'Europe/Sofia',[m
+[32m+[m[32m  'Europe/Stockholm',[m
+[32m+[m[32m  'Europe/Tallinn',[m
+[32m+[m[32m  'Europe/Tirane',[m
+[32m+[m[32m  'Europe/Ulyanovsk',[m
+[32m+[m[32m  'Europe/Uzhgorod',[m
+[32m+[m[32m  'Europe/Vienna',[m
+[32m+[m[32m  'Europe/Vilnius',[m
+[32m+[m[32m  'Europe/Volgograd',[m
+[32m+[m[32m  'Europe/Warsaw',[m
+[32m+[m[32m  'Europe/Zaporozhye',[m
+[32m+[m[32m  'Europe/Zurich',[m
+[32m+[m[32m  'HST',[m
+[32m+[m[32m  'Indian/Chagos',[m
+[32m+[m[32m  'Indian/Christmas',[m
+[32m+[m[32m  'Indian/Cocos',[m
+[32m+[m[32m  'Indian/Kerguelen',[m
+[32m+[m[32m  'Indian/Mahe',[m
+[32m+[m[32m  'Indian/Maldives',[m
+[32m+[m[32m  'Indian/Mauritius',[m
+[32m+[m[32m  'Indian/Reunion',[m
+[32m+[m[32m  'MET',[m
+[32m+[m[32m  'MST',[m
+[32m+[m[32m  'MST7MDT',[m
+[32m+[m[32m  'PST8PDT',[m
+[32m+[m[32m  'Pacific/Apia',[m
+[32m+[m[32m  'Pacific/Auckland',[m
+[32m+[m[32m  'Pacific/Bougainville',[m
+[32m+[m[32m  'Pacific/Chatham',[m
+[32m+[m[32m  'Pacific/Chuuk',[m
+[32m+[m[32m  'Pacific/Easter',[m
+[32m+[m[32m  'Pacific/Efate',[m
+[32m+[m[32m  'Pacific/Enderbury',[m
+[32m+[m[32m  'Pacific/Fakaofo',[m
+[32m+[m[32m  'Pacific/Fiji',[m
+[32m+[m[32m  'Pacific/Funafuti',[m
+[32m+[m[32m  'Pacific/Galapagos',[m
+[32m+[m[32m  'Pacific/Gambier',[m
+[32m+[m[32m  'Pacific/Guadalcanal',[m
+[32m+[m[32m  'Pacific/Guam',[m
+[32m+[m[32m  'Pacific/Honolulu',[m
+[32m+[m[32m  'Pacific/Kiritimati',[m
+[32m+[m[32m  'Pacific/Kosrae',[m
+[32m+[m[32m  'Pacific/Kwajalein',[m
+[32m+[m[32m  'Pacific/Majuro',[m
+[32m+[m[32m  'Pacific/Marquesas',[m
+[32m+[m[32m  'Pacific/Nauru',[m
+[32m+[m[32m  'Pacific/Niue',[m
+[32m+[m[32m  'Pacific/Norfolk',[m
+[32m+[m[32m  'Pacific/Noumea',[m
+[32m+[m[32m  'Pacific/Pago_Pago',[m
+[32m+[m[32m  'Pacific/Palau',[m
+[32m+[m[32m  'Pacific/Pitcairn',[m
+[32m+[m[32m  'Pacific/Pohnpei',[m
+[32m+[m[32m  'Pacific/Port_Moresby',[m
+[32m+[m[32m  'Pacific/Rarotonga',[m
+[32m+[m[32m  'Pacific/Tahiti',[m
+[32m+[m[32m  'Pacific/Tarawa',[m
+[32m+[m[32m  'Pacific/Tongatapu',[m
+[32m+[m[32m  'Pacific/Wake',[m
+[32m+[m[32m  'Pacific/Wallis',[m
+[32m+[m[32m  'WET',[m
+[32m+[m[32m];[m
+[1mdiff --git a/src/components/WeatherComponenents/CurrentWeatherInfo.tsx b/src/components/WeatherComponenents/CurrentWeatherInfo.tsx[m
+[1mindex 8cec967..d40a66e 100644[m
+[1m--- a/src/components/WeatherComponenents/CurrentWeatherInfo.tsx[m
+[1m+++ b/src/components/WeatherComponenents/CurrentWeatherInfo.tsx[m
+[36m@@ -5,7 +5,6 @@[m [mimport {[m
+   IonCardTitle,[m
+ } from '@ionic/react';[m
+ import React from 'react';[m
+[31m-import { WeatherContext } from '../../contexts/WeatherContext';[m
+ import { DisplayOverviewWeatherInfo } from './DisplayOverviewWeatherInfo';[m
+ [m
+ interface CurrentWeatherInfoProps {}[m
+[1mdiff --git a/src/components/worldTimeComponenents/CurrentTime.tsx b/src/components/worldTimeComponenents/CurrentTime.tsx[m
+[1mindex b2a0b93..4cb3037 100644[m
+[1m--- a/src/components/worldTimeComponenents/CurrentTime.tsx[m
+[1m+++ b/src/components/worldTimeComponenents/CurrentTime.tsx[m
+[36m@@ -21,21 +21,22 @@[m [mimport {[m
+ [m
+ interface CurrentTimeProps {}[m
+ export const CurrentTime: React.FC<CurrentTimeProps> = () => {[m
+[31m-  const [time, setTime] = useState<string>([m
+[31m-    DateTime.local().toFormat('hh:mm a')[m
+[31m-  );[m
+[31m-  const [dateInfo] = useState([m
+[32m+[m[32m  const [time, setTime] = useState<string>(DateTime.local().toFormat('HH:mm'));[m
+[32m+[m[32m  const [dateInfo, setDateInfo] = useState([m
+     DateTime.local().toLocaleString(DateTime.DATE_MED_WITH_WEEKDAY)[m
+   );[m
+   const timeZone = DateTime.local().toFormat('ZZZZZ');[m
+   useEffect(() => {[m
+     let isMounted = true;[m
+     if (isMounted) {[m
+[31m-      setInterval(() => setTime(DateTime.local().toFormat('hh:mm a')), 1000);[m
+[32m+[m[32m      setInterval(() => setTime(DateTime.local().toFormat('HH:mm')), 1000);[m
+[32m+[m[32m      setDateInfo([m
+[32m+[m[32m        DateTime.local().toLocaleString(DateTime.DATE_MED_WITH_WEEKDAY)[m
+[32m+[m[32m      );[m
+     }[m
+     return () => {[m
+[31m-      isMounted = false;[m
+       clearInterval();[m
+[32m+[m[32m      isMounted = false;[m
+     };[m
+   }, [time]);[m
+   return ([m
+[1mdiff --git a/src/components/worldTimeComponenents/WorldTimeCard.tsx b/src/components/worldTimeComponenents/WorldTimeCard.tsx[m
+[1mindex 0d5437a..dd4b93a 100644[m
+[1m--- a/src/components/worldTimeComponenents/WorldTimeCard.tsx[m
+[1m+++ b/src/components/worldTimeComponenents/WorldTimeCard.tsx[m
+[36m@@ -1,5 +1,6 @@[m
+ import { IonCard, IonCardContent } from '@ionic/react';[m
+[31m-import React from 'react';[m
+[32m+[m[32mimport { DateTime } from 'luxon';[m
+[32m+[m[32mimport React, { useEffect, useState } from 'react';[m
+ import {[m
+   City,[m
+   CurrentDate,[m
+[36m@@ -10,19 +11,62 @@[m [mimport {[m
+   WorldTimeLocaltionInfo,[m
+ } from '../styledComponents/WorldTimeStyledComponent';[m
+ [m
+[31m-interface WorldTimeCardProps {}[m
+[31m-export const WorldTimeCard: React.FC<WorldTimeCardProps> = () => {[m
+[32m+[m[32minterface WorldTimeCardProps {[m
+[32m+[m[32m  worldTime: {[m
+[32m+[m[32m    city?: string;[m
+[32m+[m[32m    timezone?: string;[m
+[32m+[m[32m    id?: string;[m
+[32m+[m[32m  };[m
+[32m+[m[32m}[m
+[32m+[m[32mfunction timeDiff(timezone: string) {[m
+[32m+[m[32m  const localTime = DateTime.local().offset;[m
+[32m+[m
+[32m+[m[32m  const diffTimezone = DateTime.local().setZone(timezone).offset;[m
+[32m+[m
+[32m+[m[32m  const diffInHours = (localTime - diffTimezone) / 60;[m
+[32m+[m
+[32m+[m[32m  if (diffInHours > 0) {[m
+[32m+[m[32m    return `${diffInHours} hours behind`;[m
+[32m+[m[32m  } else if (diffInHours === 0) {[m
+[32m+[m[32m    return `same as local time`;[m
+[32m+[m[32m  } else {[m
+[32m+[m[32m    return `${-1 * diffInHours} hours ahead`;[m
+[32m+[m[32m  }[m
+[32m+[m[32m}[m
+[32m+[m[32mexport const WorldTimeCard: React.FC<WorldTimeCardProps> = ({[m
+[32m+[m[32m  worldTime: { city, id, timezone },[m
+[32m+[m[32m}) => {[m
+[32m+[m[32m  const dt = DateTime.local().setZone(timezone + '');[m
+[32m+[m[32m  const [time, setTime] = useState<string>(dt.toFormat('HH:mm '));[m
+[32m+[m[32m  const [date, setDate] = useState<string>(dt.toFormat('EEE dd MMM yyyy'));[m
+[32m+[m
+[32m+[m[32m  const difference = timeDiff(timezone + '');[m
+[32m+[m
+[32m+[m[32m  useEffect(() => {[m
+[32m+[m[32m    let isMounted = true;[m
+[32m+[m[32m    if (isMounted) {[m
+[32m+[m[32m      setInterval(() => setTime(DateTime.local().toFormat('HH:mm')), 1000);[m
+[32m+[m[32m      setDate(DateTime.local().toLocaleString(DateTime.DATE_MED_WITH_WEEKDAY));[m
+[32m+[m[32m    }[m
+[32m+[m[32m    return () => {[m
+[32m+[m[32m      clearInterval();[m
+[32m+[m[32m      isMounted = false;[m
+[32m+[m[32m    };[m
+[32m+[m[32m  }, [time]);[m
+[32m+[m
+   return ([m
+     <IonCard>[m
+       <IonCardContent>[m
+         <WorldTimeContainer>[m
+           <WorldTimeLocaltionInfo>[m
+[31m-            <City>New York</City>[m
+[31m-            <TimeDifference>6 hours behind</TimeDifference>[m
+[32m+[m[32m            <City>{city}</City>[m
+[32m+[m[32m            <TimeDifference>[m
+[32m+[m[32m              {timezone === 'local' ? 'local time zone' : difference}[m
+[32m+[m[32m            </TimeDifference>[m
+           </WorldTimeLocaltionInfo>[m
+           <CurrentDateContainer>[m
+[31m-            <CurrentTime>15:00 pm</CurrentTime>[m
+[31m-            <CurrentDate>mon 28 sept</CurrentDate>[m
+[32m+[m[32m            <CurrentTime>{time}</CurrentTime>[m
+[32m+[m[32m            <CurrentDate>{date}</CurrentDate>[m
+           </CurrentDateContainer>[m
+         </WorldTimeContainer>[m
+       </IonCardContent>[m
+[1mdiff --git a/src/contexts/WeatherContext.tsx b/src/contexts/WeatherContext.tsx[m
+[1mindex 84cfdc9..40563a9 100644[m
+[1m--- a/src/contexts/WeatherContext.tsx[m
+[1m+++ b/src/contexts/WeatherContext.tsx[m
+[36m@@ -1,16 +1,20 @@[m
+ import React, { createContext } from 'react';[m
+[32m+[m[32mexport const WeatherContext = createContext<{[m
+[32m+[m[32m  weeklyWeatherInfo: {};[m
+[32m+[m[32m  currentWeatherinfo: {};[m
+[32m+[m[32m  hourlyWeatherInfo: {};[m
+[32m+[m[32m}>({ weeklyWeatherInfo: {}, currentWeatherinfo: {}, hourlyWeatherInfo: {} });[m
+ [m
+[31m-interface WeatherContextProps {}[m
+[31m-export const WeatherContext = createContext<[m
+[31m-  | { weeklyWeatherInfo: {}; currentWeatherinfo: {}; hourlyWeatherInfo: {} }[m
+[31m-  | string[m
+[31m->('');[m
+[31m-[m
+[31m-const WeatherContextProvider: React.FC<WeatherContextProps> = ({[m
+[31m-  children,[m
+[31m-}) => {[m
+[32m+[m[32mconst WeatherContextProvider: React.FC = ({ children }) => {[m
+   return ([m
+[31m-    <WeatherContext.Provider value='favour'>{children}</WeatherContext.Provider>[m
+[32m+[m[32m    <WeatherContext.Provider[m
+[32m+[m[32m      value={{[m
+[32m+[m[32m        weeklyWeatherInfo: {},[m
+[32m+[m[32m        currentWeatherinfo: {},[m
+[32m+[m[32m        hourlyWeatherInfo: {},[m
+[32m+[m[32m      }}>[m
+[32m+[m[32m      {children}[m
+[32m+[m[32m    </WeatherContext.Provider>[m
+   );[m
+ };[m
+ [m
+[1mdiff --git a/src/contexts/WorldTimeContext.tsx b/src/contexts/WorldTimeContext.tsx[m
+[1mnew file mode 100644[m
+[1mindex 0000000..38f58ee[m
+[1m--- /dev/null[m
+[1m+++ b/src/contexts/WorldTimeContext.tsx[m
+[36m@@ -0,0 +1,23 @@[m
+[32m+[m[32mimport React from 'react';[m
+[32m+[m[32mimport {[m
+[32m+[m[32m  useLocalStorage,[m
+[32m+[m[32m  ListArrayType,[m
+[32m+[m[32m  WorldTimeAction,[m
+[32m+[m[32m} from '../hooks/useLocalStorage';[m
+[32m+[m[32mexport const WorldTimeContext = React.createContext<{[m
+[32m+[m[32m  userWorldTimeList: ListArrayType;[m
+[32m+[m[32m  dispatch: React.Dispatch<WorldTimeAction>;[m
+[32m+[m[32m}>({ userWorldTimeList: [], dispatch: () => {} });[m
+[32m+[m
+[32m+[m[32mexport const WorldTimeContextProvider: React.FC = ({ children }) => {[m
+[32m+[m[32m  const { worldTimeList, dispatch } = useLocalStorage();[m
+[32m+[m[32m  return ([m
+[32m+[m[32m    <WorldTimeContext.Provider[m
+[32m+[m[32m      value={{[m
+[32m+[m[32m        userWorldTimeList: worldTimeList,[m
+[32m+[m[32m        dispatch: dispatch,[m
+[32m+[m[32m      }}>[m
+[32m+[m[32m      {children}[m
+[32m+[m[32m    </WorldTimeContext.Provider>[m
+[32m+[m[32m  );[m
+[32m+[m[32m};[m
+[1mdiff --git a/src/hooks/useLocalStorage.tsx b/src/hooks/useLocalStorage.tsx[m
+[1mnew file mode 100644[m
+[1mindex 0000000..069fb54[m
+[1m--- /dev/null[m
+[1m+++ b/src/hooks/useLocalStorage.tsx[m
+[36m@@ -0,0 +1,68 @@[m
+[32m+[m[32mimport { useReducer, useEffect } from 'react';[m
+[32m+[m[32mimport { Plugins } from '@capacitor/core';[m
+[32m+[m
+[32m+[m[32mconst { Storage } = Plugins;[m
+[32m+[m
+[32m+[m[32mexport enum TYPES {[m
+[32m+[m[32m  DELETE = 'delete',[m
+[32m+[m[32m  ADD = 'add',[m
+[32m+[m[32m}[m
+[32m+[m[32mexport type ListArrayType = Array<{[m
+[32m+[m[32m  id?: string;[m
+[32m+[m[32m  city?: string;[m
+[32m+[m[32m  timezone?: string;[m
+[32m+[m[32m}>;[m
+[32m+[m
+[32m+[m[32mexport type WorldTimeAction = {[m
+[32m+[m[32m  type: TYPES.ADD | TYPES.DELETE;[m
+[32m+[m[32m  payload: { id: string; city?: string; timezone?: string };[m
+[32m+[m[32m};[m
+[32m+[m
+[32m+[m[32mfunction reducer(state: ListArrayType, action: WorldTimeAction) {[m
+[32m+[m[32m  switch (action.type) {[m
+[32m+[m[32m    case TYPES.ADD:[m
+[32m+[m[32m      return [[m
+[32m+[m[32m        ...state,[m
+[32m+[m[32m        {[m
+[32m+[m[32m          id: action.payload.id,[m
+[32m+[m[32m          city: action.payload.city,[m
+[32m+[m[32m          timezone: action.payload.timezone,[m
+[32m+[m[32m        },[m
+[32m+[m[32m      ];[m
+[32m+[m[32m    case TYPES.DELETE:[m
+[32m+[m[32m      return state.filter((prevState) => prevState.id === action.payload.id);[m
+[32m+[m[32m    default:[m
+[32m+[m[32m      return state;[m
+[32m+[m[32m  }[m
+[32m+[m[32m}[m
+[32m+[m[32mconst initialState = [{ id: '1', city: 'local', timezone: 'local' }];[m
+[32m+[m[32mconst KEY = 'WeatherApp-worldList';[m
+[32m+[m[32mexport const useLocalStorage = () => {[m
+[32m+[m[32m  const [worldTimeList, dispatch] = useReducer(reducer, []);[m
+[32m+[m[32m  useEffect(() => {[m
+[32m+[m[32m    const addList = async () => {[m
+[32m+[m[32m      const { value } = await Storage.get({ key: KEY });[m
+[32m+[m
+[32m+[m[32m      if (value != null) {[m
+[32m+[m[32m        const InitialValues = JSON.parse(value);[m
+[32m+[m[32m        if ([m
+[32m+[m[32m          InitialValues.length > worldTimeList.length &&[m
+[32m+[m[32m          worldTimeList.length === 0[m
+[32m+[m[32m        ) {[m
+[32m+[m[32m          InitialValues.forEach((InitialValue: any) => {[m
+[32m+[m[32m            dispatch({ type: TYPES.ADD, payload: InitialValue });[m
+[32m+[m[32m          });[m
+[32m+[m[32m        } else if (InitialValues.length === worldTimeList.length) {[m
+[32m+[m[32m          return null;[m
+[32m+[m[32m        } else if (InitialValues.length < worldTimeList.length) {[m
+[32m+[m[32m          await Storage.set({ key: KEY, value: JSON.stringify(worldTimeList) });[m
+[32m+[m[32m        }[m
+[32m+[m[32m      } else {[m
+[32m+[m[32m        await Storage.set({ key: KEY, value: JSON.stringify(initialState) });[m
+[32m+[m[32m      }[m
+[32m+[m[32m    };[m
+[32m+[m[32m    addList();[m
+[32m+[m[32m  }, [worldTimeList]);[m
+[32m+[m
+[32m+[m[32m  return { worldTimeList, dispatch };[m
+[32m+[m[32m};[m
+[1mdiff --git a/src/pages/AddNewTimeZone.tsx b/src/pages/AddNewTimeZone.tsx[m
+[1mindex 55339d0..b6f5eaa 100644[m
+[1m--- a/src/pages/AddNewTimeZone.tsx[m
+[1m+++ b/src/pages/AddNewTimeZone.tsx[m
+[36m@@ -10,16 +10,91 @@[m [mimport {[m
+   IonButton,[m
+   isPlatform,[m
+   IonCard,[m
+[31m-  IonInput,[m
+   IonCardContent,[m
+[31m-  IonItem,[m
+[32m+[m[32m  IonAlert,[m
+ } from '@ionic/react';[m
+ import { add, closeOutline } from 'ionicons/icons';[m
+[31m-import React from 'react';[m
+[32m+[m[32mimport React, { useState, useContext } from 'react';[m
+ import { RouteComponentProps } from 'react-router';[m
+[32m+[m[32mimport AutoSuggest from 'react-autosuggest';[m
+[32m+[m[32m// the timezone list[m
+[32m+[m[32mimport { TIMEZONE_LIST } from '../assets/timeZoneList';[m
+[32m+[m
+[32m+[m[32mimport './addNewTimezone.css';[m
+[32m+[m[32mimport { WorldTimeContext } from '../contexts/WorldTimeContext';[m
+[32m+[m[32mimport { TYPES } from '../hooks/useLocalStorage';[m
+[32m+[m[32mimport { v4 as uuid4 } from 'uuid';[m
+[32m+[m[32mimport { DateTime } from 'luxon';[m
+ [m
+ interface AddNewTimeZoneProps extends RouteComponentProps {}[m
+[32m+[m
+ export const AddNewTimeZone: React.FC<AddNewTimeZoneProps> = ({ history }) => {[m
+[32m+[m[32m  const { dispatch, userWorldTimeList } = useContext(WorldTimeContext);[m
+[32m+[m[32m  const [timeZoneInputValue, setTimeZoneInputValue] = useState<string>('');[m
+[32m+[m[32m  const [showAlert, setShowAlert] = useState<boolean>(false);[m
+[32m+[m[32m  const [error, setError] = useState<string>();[m
+[32m+[m[32m  const [suggestions, setSuggestions] = useState(TIMEZONE_LIST);[m
+[32m+[m
+[32m+[m[32m  /* function  to add a new timezone to the array */[m
+[32m+[m[32m  function handleAddCilck() {[m
+[32m+[m[32m    // check if the user submit a emptry a string[m
+[32m+[m[32m    if (timeZoneInputValue !== '') {[m
+[32m+[m[32m      //check if the timezone is valid[m
+[32m+[m[32m      if (TIMEZONE_LIST.includes(timeZoneInputValue)) {[m
+[32m+[m[32m        let city: string;[m
+[32m+[m
+[32m+[m[32m        const timezoneSplit = timeZoneInputValue.split('/');[m
+[32m+[m[32m        let cityTxt: string;[m
+[32m+[m[32m        let cityTxtSplit;[m
+[32m+[m[32m        // ckecking the length of the split array[m
+[32m+[m[32m        if (timezoneSplit.length === 2) {[m
+[32m+[m[32m          cityTxt = timezoneSplit[1];[m
+[32m+[m[32m        } else {[m
+[32m+[m[32m          cityTxt = timezoneSplit[2];[m
+[32m+[m[32m        }[m
+[32m+[m[32m        /*[m[41m [m
+[32m+[m[32m            separating the city into two arrays if it contains a _[m
+[32m+[m[32m            and then make a single string[m
+[32m+[m[32m         */[m
+[32m+[m[32m        if (cityTxt.includes('_')) {[m
+[32m+[m[32m          cityTxtSplit = cityTxt.split('_');[m
+[32m+[m[32m          city = cityTxtSplit[0] + ' ' + cityTxtSplit[1];[m
+[32m+[m[32m        } else {[m
+[32m+[m[32m          city = cityTxt;[m
+[32m+[m[32m        }[m
+[32m+[m[32m        /**[m
+[32m+[m[32m         *  checking the timezone enterd already exists in[m
+[32m+[m[32m         *  the the  userWorldTimeList variable[m
+[32m+[m[32m         */[m
+[32m+[m[32m        for (let worldtime of userWorldTimeList) {[m
+[32m+[m[32m          if ([m
+[32m+[m[32m            worldtime.timezone === timeZoneInputValue ||[m
+[32m+[m[32m            worldtime.timezone === DateTime.local().zoneName[m
+[32m+[m[32m          ) {[m
+[32m+[m[32m            setError('timezone already added');[m
+[32m+[m[32m            return null;[m
+[32m+[m[32m          }[m
+[32m+[m[32m        }[m
+[32m+[m[32m        dispatch({[m
+[32m+[m[32m          type: TYPES.ADD,[m
+[32m+[m[32m          payload: { id: uuid4(), city: city, timezone: timeZoneInputValue },[m
+[32m+[m[32m        });[m
+[32m+[m[32m        // redirct the user the previous page[m
+[32m+[m[32m        history.goBack();[m
+[32m+[m[32m      } else {[m
+[32m+[m[32m        setError('enter correct timezone ');[m
+[32m+[m[32m      }[m
+[32m+[m[32m    } else {[m
+[32m+[m[32m      setError('timezone required');[m
+[32m+[m[32m    }[m
+[32m+[m[32m  }[m
+[32m+[m[32m  function alertHandle() {[m
+[32m+[m[32m    if (timeZoneInputValue !== '') {[m
+[32m+[m[32m      setShowAlert(true);[m
+[32m+[m[32m      return null;[m
+[32m+[m[32m    }[m
+[32m+[m[32m    history.goBack();[m
+[32m+[m[32m  }[m
+   return ([m
+     <IonApp>[m
+       <IonHeader>[m
+[36m@@ -28,15 +103,15 @@[m [mexport const AddNewTimeZone: React.FC<AddNewTimeZoneProps> = ({ history }) => {[m
+           <IonButtons color='primary' slot='start'>[m
+             <IonButton[m
+               color={isPlatform('android') ? 'primary' : ''}[m
+[31m-              onClick={() => {[m
+[31m-                history.goBack();[m
+[31m-              }}>[m
+[32m+[m[32m              onClick={alertHandle}>[m
+               <IonIcon icon={closeOutline} />[m
+               <IonLabel>cancel</IonLabel>[m
+             </IonButton>[m
+           </IonButtons>[m
+           <IonButtons color='primary' slot='end'>[m
+[31m-            <IonButton color={isPlatform('android') ? 'primary' : ''}>[m
+[32m+[m[32m            <IonButton[m
+[32m+[m[32m              color={isPlatform('android') ? 'primary' : ''}[m
+[32m+[m[32m              onClick={handleAddCilck}>[m
+               <IonLabel>add</IonLabel>[m
+               <IonIcon icon={add} />[m
+             </IonButton>[m
+[36m@@ -44,16 +119,57 @@[m [mexport const AddNewTimeZone: React.FC<AddNewTimeZoneProps> = ({ history }) => {[m
+         </IonToolbar>[m
+       </IonHeader>[m
+       <IonContent>[m
+[31m-        <IonCard className='ion-padding'>[m
+[32m+[m[32m        <IonCard className='ion-padding' style={{ height: '80%' }}>[m
+           <IonCardContent>[m
+[31m-            <form className='ion-justify-content-center ion-align-items-center'>[m
+[31m-              <IonItem>[m
+[31m-                <IonLabel position='floating'>add timezone</IonLabel>[m
+[31m-                <IonInput />[m
+[31m-              </IonItem>[m
+[32m+[m[32m            <form className='d-flex flex-column justify-content-center align-items-center'>[m
+[32m+[m[32m              <label htmlFor='timeZoneInput'>enter timezone</label>[m
+[32m+[m[32m              <AutoSuggest[m
+[32m+[m[32m                inputProps={{[m
+[32m+[m[32m                  value: timeZoneInputValue,[m
+[32m+[m[32m                  placeholder: 'enter timezone',[m
+[32m+[m[32m                  onChange: (event, { newValue }) => {[m
+[32m+[m[32m                    setTimeZoneInputValue(newValue.trim());[m
+[32m+[m[32m                  },[m
+[32m+[m[32m                  id: 'timeZoneInput',[m
+[32m+[m[32m                }}[m
+[32m+[m[32m                suggestions={suggestions}[m
+[32m+[m[32m                getSuggestionValue={(suggestion) => suggestion}[m
+[32m+[m[32m                renderSuggestion={(suggestion) => <div>{suggestion}</div>}[m
+[32m+[m[32m                onSuggestionsFetchRequested={({ value }) => {[m
+[32m+[m[32m                  if (!value) {[m
+[32m+[m[32m                    setSuggestions([]);[m
+[32m+[m[32m                    return;[m
+[32m+[m[32m                  }[m
+[32m+[m[32m                  return setSuggestions([m
+[32m+[m[32m                    TIMEZONE_LIST.filter((timezone) =>[m
+[32m+[m[32m                      timezone[m
+[32m+[m[32m                        .toLowerCase()[m
+[32m+[m[32m                        .includes(value.trim().toLowerCase())[m
+[32m+[m[32m                    )[m
+[32m+[m[32m                  );[m
+[32m+[m[32m                }}[m
+[32m+[m[32m                onSuggestionsClearRequested={() => {[m
+[32m+[m[32m                  setSuggestions([]);[m
+[32m+[m[32m                }}[m
+[32m+[m[32m              />[m
+[32m+[m[32m              <p className='text-danger'>{error ? error : ''}</p>[m
+             </form>[m
+           </IonCardContent>[m
+         </IonCard>[m
+[32m+[m[32m        <IonAlert[m
+[32m+[m[32m          isOpen={showAlert}[m
+[32m+[m[32m          onDidDismiss={() => setShowAlert(false)}[m
+[32m+[m[32m          header='Confirmation'[m
+[32m+[m[32m          message='do you want to leave without saving?'[m
+[32m+[m[32m          buttons={[[m
+[32m+[m[32m            {[m
+[32m+[m[32m              text: 'no',[m
+[32m+[m[32m              role: 'cancel',[m
+[32m+[m[32m              handler: () => console.log('alert cancelled'),[m
+[32m+[m[32m            },[m
+[32m+[m[32m            { text: 'yes', handler: () => history.goBack() },[m
+[32m+[m[32m          ]}[m
+[32m+[m[32m        />[m
+       </IonContent>[m
+     </IonApp>[m
+   );[m
+[1mdiff --git a/src/pages/CurrentWeatherDetails.tsx b/src/pages/CurrentWeatherDetails.tsx[m
+[1mindex 5f17788..4b48a43 100644[m
+[1m--- a/src/pages/CurrentWeatherDetails.tsx[m
+[1m+++ b/src/pages/CurrentWeatherDetails.tsx[m
+[36m@@ -24,7 +24,6 @@[m [mimport {[m
+   LabelText,[m
+   UnitValue,[m
+ } from '../components/styledComponents/WeatherStyledComponent';[m
+[31m-import { WeatherContext } from '../contexts/WeatherContext';[m
+ [m
+ interface CurrentWeatherDetailsProps {}[m
+ export const CurrentWeatherDetails: React.FC<CurrentWeatherDetailsProps> = () => {[m
+[1mdiff --git a/src/pages/WorldTimeList.tsx b/src/pages/WorldTimeList.tsx[m
+[1mindex 49b2af8..ac72535 100644[m
+[1m--- a/src/pages/WorldTimeList.tsx[m
+[1m+++ b/src/pages/WorldTimeList.tsx[m
+[36m@@ -7,12 +7,14 @@[m [mimport {[m
+   IonTitle,[m
+   IonToolbar,[m
+ } from '@ionic/react';[m
+[31m-import React from 'react';[m
+[32m+[m[32mimport React, { useContext } from 'react';[m
+ import FloatBtn from '../components/shared/FloatBtn';[m
+ import { WorldTimeCard } from '../components/worldTimeComponenents/WorldTimeCard';[m
+[32m+[m[32mimport { WorldTimeContext } from '../contexts/WorldTimeContext';[m
+ [m
+ interface WorldTimeListProps {}[m
+ export const WorldTimeList: React.FC<WorldTimeListProps> = () => {[m
+[32m+[m[32m  const { userWorldTimeList, dispatch } = useContext(WorldTimeContext);[m
+   return ([m
+     <IonApp>[m
+       <IonHeader>[m
+[36m@@ -24,8 +26,9 @@[m [mexport const WorldTimeList: React.FC<WorldTimeListProps> = () => {[m
+         </IonToolbar>[m
+       </IonHeader>[m
+       <IonContent className='ion-padding'>[m
+[31m-        <WorldTimeCard />[m
+[31m-        <WorldTimeCard />[m
+[32m+[m[32m        {userWorldTimeList.map((worldTime) => ([m
+[32m+[m[32m          <WorldTimeCard key={worldTime.id} worldTime={worldTime} />[m
+[32m+[m[32m        ))}[m
+         <FloatBtn link='AddNewTimeZone' />[m
+       </IonContent>[m
+     </IonApp>[m
+[1mdiff --git a/src/pages/addNewTimezone.css b/src/pages/addNewTimezone.css[m
+[1mnew file mode 100644[m
+[1mindex 0000000..d67bde3[m
+[1m--- /dev/null[m
+[1m+++ b/src/pages/addNewTimezone.css[m
+[36m@@ -0,0 +1,110 @@[m
+[32m+[m[32mform {[m
+[32m+[m[32m    width: 100%;[m
+[32m+[m[32m    max-width: 600px;[m
+[32m+[m[32m    margin: 25px auto;[m
+[32m+[m[32m}[m
+[32m+[m
+[32m+[m[32m.input-row {[m
+[32m+[m[32m    margin: 25px 0px;[m
+[32m+[m[32m}[m
+[32m+[m
+[32m+[m[32mlabel {[m
+[32m+[m[32m    display: block;[m
+[32m+[m[32m    padding-bottom: 5px;[m
+[32m+[m[32m}[m
+[32m+[m
+[32m+[m[32minput {[m
+[32m+[m[32m    width: 100%;[m
+[32m+[m[32m    padding: 5px;[m
+[32m+[m[32m}[m
+[32m+[m
+[32m+[m[32mbutton {[m
+[32m+[m[32m    border-radius: 0px;[m
+[32m+[m[32m    padding: 5px 15px;[m
+[32m+[m[32m    background: none;[m
+[32m+[m[32m    border: 1px solid #607d8b;[m
+[32m+[m[32m    cursor: pointer;[m
+[32m+[m[32m}[m
+[32m+[m
+[32m+[m[32m.form-message {[m
+[32m+[m[32m    font-size: 10px;[m
+[32m+[m[32m    padding-top: 2px;[m
+[32m+[m[32m}[m
+[32m+[m
+[32m+[m[32m.form-message.valid {[m
+[32m+[m[32m    color: #4caf50;[m
+[32m+[m[32m}[m
+[32m+[m
+[32m+[m[32m.form-message.invalid {[m
+[32m+[m[32m    color: #f44336;[m
+[32m+[m[32m}[m
+[32m+[m
+[32m+[m[32m.has-error {[m
+[32m+[m[32m    border: 1px solid #f44336;[m
+[32m+[m[32m}[m
+[32m+[m
+[32m+[m[32m.react-autosuggest__container {[m
+[32m+[m[32m    position: relative;[m
+[32m+[m[32m}[m
+[32m+[m
+[32m+[m[32m.react-autosuggest__input {[m
+[32m+[m[32m    width: 240px;[m
+[32m+[m[32m    height: 30px;[m
+[32m+[m[32m    padding: 10px 20px;[m
+[32m+[m[32m    font-family: "Open Sans", sans-serif;[m
+[32m+[m[32m    font-weight: 300;[m
+[32m+[m[32m    font-size: 16px;[m
+[32m+[m[32m    border: 1px solid #aaa;[m
+[32m+[m[32m    border-radius: 4px;[m
+[32m+[m[32m    -webkit-appearance: none;[m
+[32m+[m[32m}[m
+[32m+[m
+[32m+[m[32m.react-autosuggest__input--focused {[m
+[32m+[m[32m    outline: none;[m
+[32m+[m[32m}[m
+[32m+[m
+[32m+[m[32m.react-autosuggest__input::-ms-clear {[m
+[32m+[m[32m    display: none;[m
+[32m+[m[32m}[m
+[32m+[m
+[32m+[m[32m.react-autosuggest__input--open {[m
+[32m+[m[32m    border-bottom-left-radius: 0;[m
+[32m+[m[32m    border-bottom-right-radius: 0;[m
+[32m+[m[32m}[m
+[32m+[m
+[32m+[m[32m.react-autosuggest__suggestions-container {[m
+[32m+[m[32m    display: none;[m
+[32m+[m[32m}[m
+[32m+[m
+[32m+[m[32m.react-autosuggest__suggestions-container--open {[m
+[32m+[m[32m    display: block;[m
+[32m+[m[32m    position: absolute;[m
+[32m+[m[32m    top: 30px;[m
+[32m+[m[32m    width: 240px;[m
+[32m+[m[32m    border: 1px solid #aaa;[m
+[32m+[m[32m    background-color: #fff;[m
+[32m+[m[32m    font-family: "Open Sans", sans-serif;[m
+[32m+[m[32m    font-weight: 300;[m
+[32m+[m[32m    font-size: 16px;[m
+[32m+[m[32m    border-bottom-left-radius: 4px;[m
+[32m+[m[32m    border-bottom-right-radius: 4px;[m
+[32m+[m[32m    z-index: 2;[m
+[32m+[m[32m}[m
+[32m+[m
+[32m+[m[32m.react-autosuggest__suggestions-list {[m
+[32m+[m[32m    margin: 0;[m
+[32m+[m[32m    padding: 0;[m
+[32m+[m[32m    list-style-type: none;[m
+[32m+[m[32m    overflow-y: scroll;[m
+[32m+[m[32m    height: 200px;[m
+[32m+[m[32m}[m
+[32m+[m
+[32m+[m[32m.react-autosuggest__suggestion {[m
+[32m+[m[32m    cursor: pointer;[m
+[32m+[m[32m    padding: 10px 20px;[m
+[32m+[m[32m    border-bottom: 1px solid #737373;[m
+[32m+[m[32m}[m
+[32m+[m
+[32m+[m[32m.react-autosuggest__suggestion--highlighted {[m
+[32m+[m[32m    background-color: #ddd;[m
+[32m+[m[32m}[m
+\ No newline at end of file[m

@@ -18,11 +18,11 @@ import React, { useState, useContext } from 'react';
 import { RouteComponentProps } from 'react-router';
 import AutoSuggest from 'react-autosuggest';
 // the timezone list
-import { TIMEZONE_LIST } from '../assets/timeZoneList';
+import { TIMEZONE_LIST } from '../../assets/timeZoneList';
 
 import './addNewTimezone.css';
-import { WorldTimeContext } from '../contexts/WorldTimeContext';
-import { TYPES } from '../hooks/useLocalStorage';
+import { WorldTimeContext } from '../../contexts/WorldTimeContext';
+import { TYPES } from '../../hooks/useLocalStorage';
 import { v4 as uuid4 } from 'uuid';
 import { DateTime } from 'luxon';
 

@@ -12,7 +12,7 @@ import {
   IonCard,
   IonCardHeader,
 } from '@ionic/react';
-import { TemperatureInfo } from '../components/WeatherComponenents/TemperatureInfo';
+import { TemperatureInfo } from '../../components/WeatherComponenents/TemperatureInfo';
 
 interface WeeklyWeatherDetailsProps {}
 export const WeeklyWeatherDetails: React.FC<WeeklyWeatherDetailsProps> = () => {

@@ -6,8 +6,8 @@ import {
   IonTitle,
   IonToolbar,
 } from '@ionic/react';
-import FloatBtn from '../components/shared/FloatBtn';
-import { AlarmCard } from '../components/AlarmComponenents/AlarmCard';
+import FloatBtn from '../../components/shared/FloatBtn';
+import { AlarmCard } from '../../components/AlarmComponenents/AlarmCard';
 
 interface AlarmProps {}
 export const Alarm: React.FC<AlarmProps> = () => {

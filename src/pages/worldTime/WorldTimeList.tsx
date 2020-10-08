@@ -8,9 +8,9 @@ import {
   IonToolbar,
 } from '@ionic/react';
 import React, { useContext } from 'react';
-import FloatBtn from '../components/shared/FloatBtn';
-import { WorldTimeCard } from '../components/worldTimeComponenents/WorldTimeCard';
-import { WorldTimeContext } from '../contexts/WorldTimeContext';
+import FloatBtn from '../../components/shared/FloatBtn';
+import { WorldTimeCard } from '../../components/worldTimeComponenents/WorldTimeCard';
+import { WorldTimeContext } from '../../contexts/WorldTimeContext';
 
 interface WorldTimeListProps {}
 export const WorldTimeList: React.FC<WorldTimeListProps> = () => {

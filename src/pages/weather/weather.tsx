@@ -6,8 +6,8 @@ import {
   IonTitle,
   IonToolbar,
 } from '@ionic/react';
-import { CurrentWeatherInfo } from '../components/WeatherComponenents/CurrentWeatherInfo';
-import { WeeklyWeatherInfo } from '../components/WeatherComponenents/WeeklyWeatherInfo';
+import { CurrentWeatherInfo } from '../../components/WeatherComponenents/CurrentWeatherInfo';
+import { WeeklyWeatherInfo } from '../../components/WeatherComponenents/WeeklyWeatherInfo';
 import 'weather-icons/css/weather-icons.css';
 import 'bootstrap/dist/css/bootstrap.css';
 interface WeatherProps {}
