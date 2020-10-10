@@ -2,15 +2,18 @@ import React, { useRef, useState } from 'react';
 import './accordin.css';
 
 interface AccordinProps {
-  weatherData: {
-    temp: string;
-    time: string;
-    windSpeed: string;
-    humidity: string;
-  };
+  temp: string;
+  time: string;
+  windSpeed: string;
+  humidity: string;
+  feelsLike: string;
 }
 const Accordin: React.FC<AccordinProps> = ({
-  weatherData: { humidity, time, windSpeed, temp },
+  humidity,
+  time,
+  windSpeed,
+  temp,
+  feelsLike,
 }) => {
   const btnRef = useRef<HTMLButtonElement>(null);
   const divRef = useRef<HTMLDivElement>(null);
@@ -41,7 +44,7 @@ const Accordin: React.FC<AccordinProps> = ({
               <div className='info__icon mr-2'>
                 <i className='wi wi-thermometer' />
               </div>
-              <p className='info__text'>18 &deg; C</p>
+              <p className='info__text'>{temp} &deg; C</p>
             </div>
           </div>
           <div className='info'>
@@ -50,7 +53,7 @@ const Accordin: React.FC<AccordinProps> = ({
               <div className='info__icon mr-2'>
                 <i className='wi wi-humidity' />
               </div>
-              <p className='info__text'>100%</p>
+              <p className='info__text'>{humidity}%</p>
             </div>
           </div>
           <div className='info'>
@@ -59,7 +62,7 @@ const Accordin: React.FC<AccordinProps> = ({
               <div className='info__icon mr-2'>
                 <i className='wi wi-cloudy-windy' />
               </div>
-              <p className='info__text'>2.2 knots</p>
+              <p className='info__text'>{windSpeed} knots</p>
             </div>
           </div>
 
@@ -69,7 +72,7 @@ const Accordin: React.FC<AccordinProps> = ({
               <div className='info__icon mr-2'>
                 <i className='wi wi-thermometer' />
               </div>
-              <p className='info__text'>18 &deg; C</p>
+              <p className='info__text'>{feelsLike} &deg; C</p>
             </div>
           </div>
         </div>

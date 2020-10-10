@@ -8,17 +8,25 @@ import {
 } from '../styledComponents/WeatherStyledComponent';
 import { WeatherTextInput } from './WeatherTextInput';
 
-interface DisplayOverviewWeatherInfoProps {}
-export const DisplayOverviewWeatherInfo: React.FC<DisplayOverviewWeatherInfoProps> = () => {
+interface DisplayOverviewWeatherInfoProps {
+  temp: string;
+  description: string;
+  weatherIcon: string;
+}
+export const DisplayOverviewWeatherInfo: React.FC<DisplayOverviewWeatherInfoProps> = ({
+  temp,
+  description,
+  weatherIcon,
+}) => {
   return (
     <WeatherInfoContainer>
       <WeatherTextInput />
       <CityName>Kitwe</CityName>
-      <Deescription>light rain</Deescription>
+      <Deescription>{description}</Deescription>
       <div>
-        <i className='wi wi-day-rain display-1' />
+        <i className={`wi ${weatherIcon} display-1`} />
       </div>
-      <AvargeTemperature>17.34 &deg; C</AvargeTemperature>
+      <AvargeTemperature>{temp} &deg; C</AvargeTemperature>
       <IonButton routerLink='/CurrentWeatherDetails'>more info</IonButton>
     </WeatherInfoContainer>
   );

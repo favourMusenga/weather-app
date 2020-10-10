@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import {
   IonApp,
   IonContent,
@@ -10,8 +10,10 @@ import { CurrentWeatherInfo } from '../../components/WeatherComponenents/Current
 import { WeeklyWeatherInfo } from '../../components/WeatherComponenents/WeeklyWeatherInfo';
 import 'weather-icons/css/weather-icons.css';
 import 'bootstrap/dist/css/bootstrap.css';
+import { WeatherContext } from '../../contexts/WeatherContext';
 interface WeatherProps {}
 export const Weather: React.FC<WeatherProps> = () => {
+  const { currentWeatherinfo, dailyWeatherInfo } = useContext(WeatherContext);
   return (
     <IonApp>
       <IonHeader>
@@ -20,8 +22,8 @@ export const Weather: React.FC<WeatherProps> = () => {
         </IonToolbar>
       </IonHeader>
       <IonContent className='ion-padding'>
-        <CurrentWeatherInfo />
-        <WeeklyWeatherInfo />
+        <CurrentWeatherInfo currentWeatherInfo={currentWeatherinfo} />
+        <WeeklyWeatherInfo dailyWeather={dailyWeatherInfo} />
       </IonContent>
     </IonApp>
   );

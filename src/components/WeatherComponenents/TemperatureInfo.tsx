@@ -18,25 +18,51 @@ import {
   UnitValue,
 } from '../styledComponents/WeatherStyledComponent';
 
-interface TemperatureInfoProps {}
-export const TemperatureInfo: React.FC<TemperatureInfoProps> = () => {
+interface TemperatureInfoProps {
+  temp_day: string;
+  temp_eve: string;
+  temp_night: string;
+  temp_morning: string;
+  temp_min: string;
+  temp_max: string;
+  windSpeed: string;
+  humidity: string;
+  sunrise: string;
+  sunset: string;
+  weatherIcon: string;
+  description: string;
+}
+export const TemperatureInfo: React.FC<TemperatureInfoProps> = ({
+  temp_day,
+  temp_night,
+  temp_morning,
+  temp_eve,
+  temp_min,
+  temp_max,
+  windSpeed,
+  humidity,
+  sunrise,
+  sunset,
+  weatherIcon,
+  description,
+}) => {
   return (
     <>
       <WeatherInfoContainer>
         <CityName>Kitwe</CityName>
-        <Deescription>light rain</Deescription>
+        <Deescription>{description}</Deescription>
         <div>
-          <i className='wi wi-day-rain display-1' />
+          <i className={`wi ${weatherIcon} display-1`} />
         </div>
-        <AvargeTemperature>26.4 &deg; C</AvargeTemperature>
+        <AvargeTemperature>{temp_day} &deg; C</AvargeTemperature>
         <OtherWeatherInfo>
           <RightSideTab>
             <LabelText>min temp</LabelText>
-            <UnitValue>16.6</UnitValue>
+            <UnitValue>{temp_min}</UnitValue>
           </RightSideTab>
           <LeftSideTab>
             <LabelText>max temp</LabelText>
-            <UnitValue>26.6</UnitValue>
+            <UnitValue>{temp_max}</UnitValue>
           </LeftSideTab>
         </OtherWeatherInfo>
         <IonList style={{ width: '100%' }}>
@@ -44,32 +70,32 @@ export const TemperatureInfo: React.FC<TemperatureInfoProps> = () => {
             more information:
           </IonListHeader>
           <IonItem>
-            <IonLabel>eve temp:</IonLabel>
-            <IonText>28 &deg; C</IonText>
+            <IonLabel>evening temp:</IonLabel>
+            <IonText>{temp_eve} &deg; C</IonText>
           </IonItem>
           <IonItem>
-            <IonLabel>morn temp:</IonLabel>
-            <IonText>24 &deg; C</IonText>
+            <IonLabel>morning temp:</IonLabel>
+            <IonText>{temp_morning} &deg; C</IonText>
           </IonItem>
           <IonItem>
             <IonLabel>night temp:</IonLabel>
-            <IonText>18 &deg; C</IonText>
+            <IonText>{temp_night} &deg; C</IonText>
           </IonItem>
           <IonItem>
             <IonLabel>sunrise:</IonLabel>
-            <IonText>06:00 pm</IonText>
+            <IonText>{sunrise}</IonText>
           </IonItem>
           <IonItem>
             <IonLabel>sunset:</IonLabel>
-            <IonText>18:00 pm</IonText>
+            <IonText>{sunset}</IonText>
           </IonItem>
           <IonItem>
             <IonLabel>wind speed:</IonLabel>
-            <IonText>2.5</IonText>
+            <IonText>{windSpeed}</IonText>
           </IonItem>
           <IonItem>
             <IonLabel>humdity:</IonLabel>
-            <IonText>95%</IonText>
+            <IonText>{humidity}%</IonText>
           </IonItem>
         </IonList>
       </WeatherInfoContainer>

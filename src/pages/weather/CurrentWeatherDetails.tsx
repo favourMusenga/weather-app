@@ -11,7 +11,7 @@ import {
   IonTitle,
   IonToolbar,
 } from '@ionic/react';
-import React from 'react';
+import React, { useContext } from 'react';
 import Accordin from '../../components/Accordin';
 import {
   WeatherInfoContainer,
@@ -24,15 +24,11 @@ import {
   LabelText,
   UnitValue,
 } from '../../components/styledComponents/WeatherStyledComponent';
+import { WeatherContext } from '../../contexts/WeatherContext';
 
 interface CurrentWeatherDetailsProps {}
 export const CurrentWeatherDetails: React.FC<CurrentWeatherDetailsProps> = () => {
-  const weatherData = {
-    temp: '20',
-    time: '10:00 pm',
-    windSpeed: '2.2',
-    humidity: '48',
-  };
+  const { hourlyWeatherInfo, currentWeatherinfo } = useContext(WeatherContext);
   return (
     <IonApp>
       <IonHeader>
@@ -51,25 +47,36 @@ export const CurrentWeatherDetails: React.FC<CurrentWeatherDetailsProps> = () =>
           <IonCardContent>
             <WeatherInfoContainer>
               <CityName>Kitwe</CityName>
-              <Deescription>light rain</Deescription>
+              <Deescription>{currentWeatherinfo.description}</Deescription>
               <div>
-                <i className='wi wi-day-rain display-1' />
+                <i
+                  className={`wi ${currentWeatherinfo.weatherIcon} display-1`}
+                />
               </div>
-              <AvargeTemperature>17.34 &deg; C</AvargeTemperature>
+              <AvargeTemperature>
+                {currentWeatherinfo.temp} &deg; C
+              </AvargeTemperature>
               <OtherWeatherInfo>
                 <RightSideTab>
                   <LabelText>humidity</LabelText>
-                  <UnitValue>100</UnitValue>
+                  <UnitValue>{currentWeatherinfo.humidity}</UnitValue>
                 </RightSideTab>
                 <LeftSideTab>
                   <LabelText>wind speed</LabelText>
-                  <UnitValue>2.1</UnitValue>
+                  <UnitValue>{currentWeatherinfo.windSpeed}</UnitValue>
                 </LeftSideTab>
               </OtherWeatherInfo>
               <div>
-                <Accordin weatherData={weatherData} />
-                <Accordin weatherData={weatherData} />
-                <Accordin weatherData={weatherData} />
+                {hourlyWeatherInfo.map((hourlyInfo, index) => (
+                  <Accordin
+                    key={index}
+                    feelsLike={hourlyInfo.feels_like!}
+                    temp={hourlyInfo.temp!}
+                    humidity={hourlyInfo.humidity!}
+                    windSpeed={hourlyInfo.windSpeed!}
+                    time={hourlyInfo.dt!}
+                  />
+                ))}
               </div>
             </WeatherInfoContainer>
           </IonCardContent>

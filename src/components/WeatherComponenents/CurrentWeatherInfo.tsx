@@ -5,10 +5,15 @@ import {
   IonCardTitle,
 } from '@ionic/react';
 import React from 'react';
+import { currentweatherType } from '../../types/weatherType';
 import { DisplayOverviewWeatherInfo } from './DisplayOverviewWeatherInfo';
 
-interface CurrentWeatherInfoProps {}
-export const CurrentWeatherInfo: React.FC<CurrentWeatherInfoProps> = () => {
+interface CurrentWeatherInfoProps {
+  currentWeatherInfo: currentweatherType;
+}
+export const CurrentWeatherInfo: React.FC<CurrentWeatherInfoProps> = ({
+  currentWeatherInfo,
+}) => {
   return (
     <>
       <IonCard>
@@ -16,7 +21,11 @@ export const CurrentWeatherInfo: React.FC<CurrentWeatherInfoProps> = () => {
           <IonCardTitle>Current weather info</IonCardTitle>
         </IonCardHeader>
         <IonCardContent>
-          <DisplayOverviewWeatherInfo />
+          <DisplayOverviewWeatherInfo
+            temp={currentWeatherInfo.temp!}
+            description={currentWeatherInfo.description!}
+            weatherIcon={currentWeatherInfo.weatherIcon!}
+          />
         </IonCardContent>
       </IonCard>
     </>

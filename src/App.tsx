@@ -53,7 +53,7 @@ const App: React.FC = () => (
             <WorldTimeContextProvider>
               <Route path='/Weather' component={Weather} exact={true} />
               <Route
-                path='/WeeklyWeatherDetails'
+                path='/WeeklyWeatherDetails/:id'
                 component={WeeklyWeatherDetails}
               />
               <Route
