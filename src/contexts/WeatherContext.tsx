@@ -1,7 +1,8 @@
 import Axios from 'axios';
 import { DateTime } from 'luxon';
-import React, { createContext } from 'react';
+import React, { createContext, useState } from 'react';
 import { useQuery } from 'react-query';
+import useLocation from '../hooks/useLocation';
 import {
   currentweatherType,
   dailyWeatherType,
@@ -11,11 +12,29 @@ export const WeatherContext = createContext<{
   dailyWeatherInfo: dailyWeatherType;
   currentWeatherinfo: currentweatherType;
   hourlyWeatherInfo: hourlyWeatherType;
-}>({ dailyWeatherInfo: [], currentWeatherinfo: {}, hourlyWeatherInfo: [] });
+  city: string;
+  isLoading: boolean;
+}>({
+  dailyWeatherInfo: [],
+  currentWeatherinfo: {},
+  hourlyWeatherInfo: [],
+  city: '',
+  isLoading: false,
+});
 
-async function fetchWeatherInfo() {
+async function fetchWeatherInfo(
+  key: string,
+  latitude: string,
+  longitude: string
+) {
+  const api = `https://api.openweathermap.org/data/2.5/onecall?lat=${latitude}&lon=${longitude}&exclude=minutely&appid=8752acc8c0b1dd9bf0ae09efa7ce4262&units=metric`;
   try {
-    const json = await Axios('assets/onecall.json');
+    if (latitude === '' || longitude === '') {
+      return null;
+    }
+    const json = await Axios(api);
+    console.log(latitude, longitude);
+
     return json;
   } catch (e) {
     console.log(e);
@@ -54,7 +73,19 @@ const WeatherContextProvider: React.FC = ({ children }) => {
   let currentWeather: object = {};
   let dailyWeather: dailyWeatherType = [];
   let hourlyWeather: Array<object> = [];
-  const { data } = useQuery('weather', fetchWeatherInfo);
+
+  const { longitude, latitude } = useLocation();
+  const [city, setCity] = useState<string>('local');
+
+  const { data, isLoading } = useQuery(
+    ['weather', latitude, longitude],
+    fetchWeatherInfo,
+    {
+      staleTime: 1000 * 60 * 60,
+      cacheTime: 1000 * 60 * 60,
+      refetchOnMount: false,
+    }
+  );
   const weatherDataJson = data?.data;
   if (weatherDataJson) {
     currentWeather = {
@@ -69,6 +100,7 @@ const WeatherContextProvider: React.FC = ({ children }) => {
         .setZone(weatherDataJson.timezone)
         .toFormat('ccc dd MMM HH:mm')
     );
+
     const filteredWeatherDataJson = weatherDataJson.hourly.filter(
       (hourlyInfo: any) => +weatherDataJson.current.dt < +hourlyInfo.dt
     );
@@ -117,6 +149,8 @@ const WeatherContextProvider: React.FC = ({ children }) => {
         dailyWeatherInfo: dailyWeather,
         currentWeatherinfo: currentWeather,
         hourlyWeatherInfo: hourlyWeather,
+        city: city,
+        isLoading: isLoading,
       }}>
       {children}
     </WeatherContext.Provider>

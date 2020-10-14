@@ -28,7 +28,7 @@ import { WeatherContext } from '../../contexts/WeatherContext';
 
 interface CurrentWeatherDetailsProps {}
 export const CurrentWeatherDetails: React.FC<CurrentWeatherDetailsProps> = () => {
-  const { hourlyWeatherInfo, currentWeatherinfo } = useContext(WeatherContext);
+  const { hourlyWeatherInfo, currentWeatherinfo, city } = useContext(WeatherContext);
   return (
     <IonApp>
       <IonHeader>
@@ -46,7 +46,7 @@ export const CurrentWeatherDetails: React.FC<CurrentWeatherDetailsProps> = () =>
           </IonCardHeader>
           <IonCardContent>
             <WeatherInfoContainer>
-              <CityName>Kitwe</CityName>
+  <CityName>{city}</CityName>
               <Deescription>{currentWeatherinfo.description}</Deescription>
               <div>
                 <i

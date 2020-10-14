@@ -21,7 +21,7 @@ interface WeeklyWeatherDetailsProps
 export const WeeklyWeatherDetails: React.FC<WeeklyWeatherDetailsProps> = ({
   match,
 }) => {
-  const { dailyWeatherInfo } = useContext(WeatherContext);
+  const { dailyWeatherInfo, city } = useContext(WeatherContext);
   const {
     temp_day,
     temp_night,
@@ -66,6 +66,7 @@ export const WeeklyWeatherDetails: React.FC<WeeklyWeatherDetailsProps> = ({
               sunset={sunset!}
               weatherIcon={weatherIcon!}
               description={description!}
+              city={city}
             />
           </IonCardContent>
         </IonCard>

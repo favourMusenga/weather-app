@@ -40,7 +40,8 @@ export const WorldTimeCard: React.FC<WorldTimeCardProps> = ({
   worldTime: { city, id, timezone },
   dispatch,
 }) => {
-  const dt = DateTime.local().setZone(timezone + '');
+  const dt = DateTime.local().setZone(timezone!);
+
   const [time, setTime] = useState<string>(dt.toFormat('HH:mm '));
   const [date, setDate] = useState<string>(dt.toFormat('EEE dd MMM yyyy'));
 
@@ -61,11 +62,7 @@ export const WorldTimeCard: React.FC<WorldTimeCardProps> = ({
   }, [time]);
 
   function onMove(details: any, element: any) {
-    console.log('in in in move');
-
     const deltaX = details.deltaX;
-
-    // console.log(`deltaX:  ${deltaX}`);
     if (element.current != null) {
       element.current.style.transform = `translateX(${deltaX}px)`;
     }
@@ -77,7 +74,6 @@ export const WorldTimeCard: React.FC<WorldTimeCardProps> = ({
   function onEnd(ev: any, element: React.RefObject<HTMLElement>) {
     let deltaX = +ev.deltaX;
     element.current!.style.transition = 'transform 1s ease-out';
-    console.log(deltaX);
     if (element.current != null) {
       if (deltaX >= 167) {
         if (id === '1') {

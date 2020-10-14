@@ -10,9 +10,11 @@ import { DisplayOverviewWeatherInfo } from './DisplayOverviewWeatherInfo';
 
 interface CurrentWeatherInfoProps {
   currentWeatherInfo: currentweatherType;
+  city: string;
 }
 export const CurrentWeatherInfo: React.FC<CurrentWeatherInfoProps> = ({
   currentWeatherInfo,
+  city,
 }) => {
   return (
     <>
@@ -25,6 +27,7 @@ export const CurrentWeatherInfo: React.FC<CurrentWeatherInfoProps> = ({
             temp={currentWeatherInfo.temp!}
             description={currentWeatherInfo.description!}
             weatherIcon={currentWeatherInfo.weatherIcon!}
+            city={city}
           />
         </IonCardContent>
       </IonCard>

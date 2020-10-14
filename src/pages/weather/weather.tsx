@@ -3,6 +3,7 @@ import {
   IonApp,
   IonContent,
   IonHeader,
+  IonLoading,
   IonTitle,
   IonToolbar,
 } from '@ionic/react';
@@ -11,9 +12,12 @@ import { WeeklyWeatherInfo } from '../../components/WeatherComponenents/WeeklyWe
 import 'weather-icons/css/weather-icons.css';
 import 'bootstrap/dist/css/bootstrap.css';
 import { WeatherContext } from '../../contexts/WeatherContext';
+import { ReactQueryDevtools } from 'react-query-devtools';
 interface WeatherProps {}
 export const Weather: React.FC<WeatherProps> = () => {
-  const { currentWeatherinfo, dailyWeatherInfo } = useContext(WeatherContext);
+  const { currentWeatherinfo, dailyWeatherInfo, city, isLoading } = useContext(
+    WeatherContext
+  );
   return (
     <IonApp>
       <IonHeader>
@@ -22,8 +26,18 @@ export const Weather: React.FC<WeatherProps> = () => {
         </IonToolbar>
       </IonHeader>
       <IonContent className='ion-padding'>
-        <CurrentWeatherInfo currentWeatherInfo={currentWeatherinfo} />
-        <WeeklyWeatherInfo dailyWeather={dailyWeatherInfo} />
+        {isLoading ? (
+          <IonLoading isOpen={true} />
+        ) : (
+          <>
+            <CurrentWeatherInfo
+              currentWeatherInfo={currentWeatherinfo}
+              city={city}
+            />
+            <WeeklyWeatherInfo dailyWeather={dailyWeatherInfo} />
+          </>
+        )}
+        <ReactQueryDevtools initialIsOpen={false} />
       </IonContent>
     </IonApp>
   );

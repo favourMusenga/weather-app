@@ -31,6 +31,7 @@ interface TemperatureInfoProps {
   sunset: string;
   weatherIcon: string;
   description: string;
+  city: string;
 }
 export const TemperatureInfo: React.FC<TemperatureInfoProps> = ({
   temp_day,
@@ -45,11 +46,12 @@ export const TemperatureInfo: React.FC<TemperatureInfoProps> = ({
   sunset,
   weatherIcon,
   description,
+  city,
 }) => {
   return (
     <>
       <WeatherInfoContainer>
-        <CityName>Kitwe</CityName>
+        <CityName>{city}</CityName>
         <Deescription>{description}</Deescription>
         <div>
           <i className={`wi ${weatherIcon} display-1`} />

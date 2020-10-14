@@ -6,22 +6,22 @@ import {
   Deescription,
   AvargeTemperature,
 } from '../styledComponents/WeatherStyledComponent';
-import { WeatherTextInput } from './WeatherTextInput';
 
 interface DisplayOverviewWeatherInfoProps {
   temp: string;
   description: string;
   weatherIcon: string;
+  city: string;
 }
 export const DisplayOverviewWeatherInfo: React.FC<DisplayOverviewWeatherInfoProps> = ({
   temp,
   description,
   weatherIcon,
+  city,
 }) => {
   return (
     <WeatherInfoContainer>
-      <WeatherTextInput />
-      <CityName>Kitwe</CityName>
+      <CityName>{city}</CityName>
       <Deescription>{description}</Deescription>
       <div>
         <i className={`wi ${weatherIcon} display-1`} />
