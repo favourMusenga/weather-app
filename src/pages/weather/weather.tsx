@@ -14,11 +14,17 @@ import 'bootstrap/dist/css/bootstrap.css';
 import { WeatherContext } from '../../contexts/WeatherContext';
 import { ReactQueryDevtools } from 'react-query-devtools';
 import { Offline } from '../../components/WeatherComponenents/Offline';
+import { Error } from '../../components/shared/Error';
 interface WeatherProps {}
 export const Weather: React.FC<WeatherProps> = () => {
-  const { currentWeatherinfo, dailyWeatherInfo, city, isLoading } = useContext(
-    WeatherContext
-  );
+  const {
+    currentWeatherinfo,
+    dailyWeatherInfo,
+    city,
+    isLoading,
+    isError,
+    refetch,
+  } = useContext(WeatherContext);
   const isOffline = !navigator.onLine;
   return (
     <IonApp>
@@ -30,6 +36,8 @@ export const Weather: React.FC<WeatherProps> = () => {
       <IonContent className='ion-padding'>
         {isOffline ? (
           <Offline />
+        ) : isError ? (
+          <Error refetch={refetch} />
         ) : isLoading ? (
           <IonLoading isOpen={true} />
         ) : (

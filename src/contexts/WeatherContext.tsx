@@ -1,7 +1,8 @@
-import Axios from 'axios';
+import Axios, { AxiosResponse } from 'axios';
 import { DateTime } from 'luxon';
 import React, { createContext, useState } from 'react';
 import { useQuery } from 'react-query';
+import { RefetchOptions } from 'react-query/types/core/query';
 import useLocation from '../hooks/useLocation';
 import {
   currentweatherType,
@@ -14,12 +15,18 @@ export const WeatherContext = createContext<{
   hourlyWeatherInfo: hourlyWeatherType;
   city: string;
   isLoading: boolean;
+  isError: boolean;
+  refetch: (
+    options?: RefetchOptions | undefined
+  ) => Promise<AxiosResponse<any> | null | undefined>;
 }>({
   dailyWeatherInfo: [],
   currentWeatherinfo: {},
   hourlyWeatherInfo: [],
   city: '',
   isLoading: false,
+  isError: false,
+  refetch: (options): Promise<null> => new Promise((rev, reject) => null),
 });
 
 async function fetchWeatherInfo(
@@ -77,7 +84,7 @@ const WeatherContextProvider: React.FC = ({ children }) => {
   const { longitude, latitude } = useLocation();
   const [city, setCity] = useState<string>('local');
 
-  const { data, isLoading } = useQuery(
+  const { data, isLoading, isError, refetch } = useQuery(
     ['weather', latitude, longitude],
     fetchWeatherInfo,
     {
@@ -151,6 +158,8 @@ const WeatherContextProvider: React.FC = ({ children }) => {
         hourlyWeatherInfo: hourlyWeather,
         city: city,
         isLoading: isLoading,
+        isError: isError,
+        refetch: refetch,
       }}>
       {children}
     </WeatherContext.Provider>
