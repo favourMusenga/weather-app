@@ -40,10 +40,12 @@ export const WorldTimeCard: React.FC<WorldTimeCardProps> = ({
   worldTime: { city, id, timezone },
   dispatch,
 }) => {
-  const dt = DateTime.local().setZone(timezone!);
-
-  const [time, setTime] = useState<string>(dt.toFormat('HH:mm '));
-  const [date, setDate] = useState<string>(dt.toFormat('EEE dd MMM yyyy'));
+  const [time, setTime] = useState<string>(
+    DateTime.local().setZone(timezone!).toFormat('HH:mm ')
+  );
+  const [date, setDate] = useState<string>(
+    DateTime.local().setZone(timezone!).toFormat('EEE dd MMM yyyy')
+  );
 
   const cardRef = useRef(null);
 
@@ -52,8 +54,10 @@ export const WorldTimeCard: React.FC<WorldTimeCardProps> = ({
   useEffect(() => {
     let isMounted = true;
     if (isMounted) {
-      setInterval(() => setTime(dt.toFormat('HH:mm')), 1000);
-      setDate(dt.toFormat('EEE dd MMM yyyy'));
+      setInterval(() => {
+        setTime(DateTime.local().setZone(timezone!).toFormat('HH:mm '));
+      }, 1000);
+      setDate(DateTime.local().setZone(timezone!).toFormat('EEE dd MMM yyyy'));
     }
     return () => {
       clearInterval();

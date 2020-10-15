@@ -1,5 +1,5 @@
 {
-  "name": "weather app",
+  "name": "weather_app",
   "version": "1.0.0",
   "description": "An Amazing Capacitor App",
   "main": "./build/index.js",
