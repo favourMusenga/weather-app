@@ -10,7 +10,7 @@ import {
   IonTabs,
 } from '@ionic/react';
 import { IonReactRouter } from '@ionic/react-router';
-import { alarm, time, sunny } from 'ionicons/icons';
+import { alarm, time, sunny, settings } from 'ionicons/icons';
 
 import { LocalNotification, Plugins } from '@capacitor/core';
 
@@ -45,11 +45,15 @@ import { AddNewTimeZone } from './pages/worldTime/AddNewTimeZone';
 import { AddAlarm } from './pages/alarm/AddAlarm';
 import { AlarmContext } from './contexts/AlarmContext';
 import { ALARM_TYPES } from './hooks/useAlarmStorage';
+import Settings from './pages/Settings';
+import { getSetting } from './actions/SettingAction';
+import { useDispatch } from 'react-redux';
 
 const { LocalNotifications } = Plugins;
 
 const App: React.FC = () => {
   const { dispatch, onIsCompleteChange } = useContext(AlarmContext);
+  const dipatchRedux = useDispatch();
   useEffect(() => {
     const requestPermission = async () => {
       await LocalNotifications.requestPermission();
@@ -65,7 +69,8 @@ const App: React.FC = () => {
         dispatch({ type: ALARM_TYPES.COMPLETED, payload: { id: +id } });
       }
     );
-  }, [onIsCompleteChange, dispatch]);
+    dipatchRedux(getSetting());
+  }, [onIsCompleteChange, dispatch, dipatchRedux]);
   return (
     <IonApp>
       <IonReactRouter>
@@ -91,6 +96,7 @@ const App: React.FC = () => {
               render={() => <Redirect to='/Weather' />}
               exact={true}
             />
+            <Route path='/settings' component={Settings} />
           </IonRouterOutlet>
           <IonTabBar slot='bottom'>
             <IonTabButton tab='tab1' href='/Weather'>
@@ -104,6 +110,10 @@ const App: React.FC = () => {
             <IonTabButton tab='tab3' href='/Alarm'>
               <IonIcon icon={alarm} />
               <IonLabel>alarm</IonLabel>
+            </IonTabButton>
+            <IonTabButton tab='tab4' href='/settings'>
+              <IonIcon icon={settings} />
+              <IonLabel>setting</IonLabel>
             </IonTabButton>
           </IonTabBar>
         </IonTabs>

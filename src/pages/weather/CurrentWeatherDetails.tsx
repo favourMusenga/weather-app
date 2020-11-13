@@ -12,6 +12,7 @@ import {
   IonToolbar,
 } from '@ionic/react';
 import React, { useContext } from 'react';
+import { useSelector } from 'react-redux';
 import Accordin from '../../components/Accordin';
 import {
   WeatherInfoContainer,
@@ -25,11 +26,15 @@ import {
   UnitValue,
 } from '../../components/styledComponents/WeatherStyledComponent';
 import { WeatherContext } from '../../contexts/WeatherContext';
+import { SetttingState } from '../../reducers/settingReducer';
 
 interface CurrentWeatherDetailsProps {}
 export const CurrentWeatherDetails: React.FC<CurrentWeatherDetailsProps> = () => {
   const { hourlyWeatherInfo, currentWeatherinfo, city } = useContext(
     WeatherContext
+  );
+  const { temperatureFormat } = useSelector<SetttingState, SetttingState>(
+    (state) => state
   );
   return (
     <IonPage>
@@ -56,7 +61,8 @@ export const CurrentWeatherDetails: React.FC<CurrentWeatherDetailsProps> = () =>
                 />
               </div>
               <AvargeTemperature>
-                {currentWeatherinfo.temp} &deg; C
+                {currentWeatherinfo.temp} &deg;
+                {temperatureFormat === 'metric' ? 'C' : 'F'}
               </AvargeTemperature>
               <OtherWeatherInfo>
                 <RightSideTab>

@@ -6,6 +6,8 @@ import {
   IonText,
 } from '@ionic/react';
 import React from 'react';
+import { useSelector } from 'react-redux';
+import { SetttingState } from '../../reducers/settingReducer';
 import {
   AvargeTemperature,
   CityName,
@@ -48,6 +50,9 @@ export const TemperatureInfo: React.FC<TemperatureInfoProps> = ({
   description,
   city,
 }) => {
+  const { temperatureFormat } = useSelector<SetttingState, SetttingState>(
+    (state) => state
+  );
   return (
     <>
       <WeatherInfoContainer>
@@ -56,7 +61,9 @@ export const TemperatureInfo: React.FC<TemperatureInfoProps> = ({
         <div>
           <i className={`wi ${weatherIcon} display-1`} />
         </div>
-        <AvargeTemperature>{temp_day} &deg; C</AvargeTemperature>
+        <AvargeTemperature>
+          {temp_day} &deg; {temperatureFormat === 'metric' ? 'C' : 'F'}
+        </AvargeTemperature>
         <OtherWeatherInfo>
           <RightSideTab>
             <LabelText>min temp</LabelText>
@@ -73,15 +80,21 @@ export const TemperatureInfo: React.FC<TemperatureInfoProps> = ({
           </IonListHeader>
           <IonItem>
             <IonLabel>evening temp:</IonLabel>
-            <IonText>{temp_eve} &deg; C</IonText>
+            <IonText>
+              {temp_eve} &deg; {temperatureFormat === 'metric' ? 'C' : 'F'}
+            </IonText>
           </IonItem>
           <IonItem>
             <IonLabel>morning temp:</IonLabel>
-            <IonText>{temp_morning} &deg; C</IonText>
+            <IonText>
+              {temp_morning} &deg; {temperatureFormat === 'metric' ? 'C' : 'F'}
+            </IonText>
           </IonItem>
           <IonItem>
             <IonLabel>night temp:</IonLabel>
-            <IonText>{temp_night} &deg; C</IonText>
+            <IonText>
+              {temp_night} &deg; {temperatureFormat === 'metric' ? 'C' : 'F'}
+            </IonText>
           </IonItem>
           <IonItem>
             <IonLabel>sunrise:</IonLabel>
@@ -93,7 +106,9 @@ export const TemperatureInfo: React.FC<TemperatureInfoProps> = ({
           </IonItem>
           <IonItem>
             <IonLabel>wind speed:</IonLabel>
-            <IonText>{windSpeed}</IonText>
+            <IonText>
+              {windSpeed} {temperatureFormat === 'metric' ? 'm/s' : 'mi/hr'}
+            </IonText>
           </IonItem>
           <IonItem>
             <IonLabel>humdity:</IonLabel>

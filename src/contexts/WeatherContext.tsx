@@ -3,7 +3,9 @@ import { DateTime } from 'luxon';
 import React, { createContext, useState } from 'react';
 import { useQuery } from 'react-query';
 import { RefetchOptions } from 'react-query/types/core/query';
+import { useSelector } from 'react-redux';
 import useLocation from '../hooks/useLocation';
+import { SetttingState } from '../reducers/settingReducer';
 import {
   currentweatherType,
   dailyWeatherType,
@@ -35,9 +37,10 @@ const API_KEY = process.env.REACT_APP_API_KEY;
 async function fetchWeatherInfo(
   key: string,
   latitude: string,
-  longitude: string
+  longitude: string,
+  temperatureFormat: string
 ) {
-  const api = `https://api.openweathermap.org/data/2.5/onecall?lat=${latitude}&lon=${longitude}&exclude=minutely&appid=${API_KEY}&units=metric`;
+  const api = `https://api.openweathermap.org/data/2.5/onecall?lat=${latitude}&lon=${longitude}&exclude=minutely&appid=${API_KEY}&units=${temperatureFormat}`;
 
   if (latitude === '' || longitude === '') {
     return null;
@@ -79,12 +82,15 @@ const WeatherContextProvider: React.FC = ({ children }) => {
   let currentWeather: object = {};
   let dailyWeather: dailyWeatherType = [];
   let hourlyWeather: Array<object> = [];
+  const { temperatureFormat } = useSelector<SetttingState, SetttingState>(
+    (state) => state
+  );
 
   const { longitude, latitude } = useLocation();
-  const [city, setCity] = useState<string>('local');
+  const [city] = useState<string>('local');
 
   const { data, isLoading, isError, refetch } = useQuery(
-    ['weather', latitude, longitude],
+    ['weather', latitude, longitude, temperatureFormat],
     fetchWeatherInfo,
     {
       staleTime: 1000 * 60 * 60,

@@ -18,10 +18,17 @@ import {
   LocalTimeInfo,
   TimeZone,
 } from '../styledComponents/WorldTimeStyledComponent';
+import { SetttingState } from '../../reducers/settingReducer';
+import { useSelector } from 'react-redux';
 
 interface CurrentTimeProps {}
 export const CurrentTime: React.FC<CurrentTimeProps> = () => {
-  const [time, setTime] = useState<string>(DateTime.local().toFormat('HH:mm'));
+  const { timeFormat } = useSelector<SetttingState, SetttingState>(
+    (state) => state
+  );
+  const [time, setTime] = useState<string>(
+    DateTime.local().toFormat(timeFormat)
+  );
   const [dateInfo, setDateInfo] = useState(
     DateTime.local().toLocaleString(DateTime.DATE_MED_WITH_WEEKDAY)
   );
@@ -29,7 +36,7 @@ export const CurrentTime: React.FC<CurrentTimeProps> = () => {
   useEffect(() => {
     let isMounted = true;
     if (isMounted) {
-      setInterval(() => setTime(DateTime.local().toFormat('HH:mm')), 1000);
+      setInterval(() => setTime(DateTime.local().toFormat(timeFormat)), 1000);
       setDateInfo(
         DateTime.local().toLocaleString(DateTime.DATE_MED_WITH_WEEKDAY)
       );

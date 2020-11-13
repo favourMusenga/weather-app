@@ -1,5 +1,7 @@
 import { IonButton } from '@ionic/react';
 import React from 'react';
+import { useSelector } from 'react-redux';
+import { SetttingState } from '../../reducers/settingReducer';
 import {
   WeatherInfoContainer,
   CityName,
@@ -19,6 +21,9 @@ export const DisplayOverviewWeatherInfo: React.FC<DisplayOverviewWeatherInfoProp
   weatherIcon,
   city,
 }) => {
+  const { temperatureFormat } = useSelector<SetttingState, SetttingState>(
+    (state) => state
+  );
   return (
     <WeatherInfoContainer>
       <CityName>{city}</CityName>
@@ -26,7 +31,9 @@ export const DisplayOverviewWeatherInfo: React.FC<DisplayOverviewWeatherInfoProp
       <div>
         <i className={`wi ${weatherIcon} display-1`} />
       </div>
-      <AvargeTemperature>{temp} &deg; C</AvargeTemperature>
+      <AvargeTemperature>
+        {temp} &deg; {temperatureFormat === 'metric' ? 'C' : 'F'}
+      </AvargeTemperature>
       <IonButton routerLink='/CurrentWeatherDetails'>more info</IonButton>
     </WeatherInfoContainer>
   );

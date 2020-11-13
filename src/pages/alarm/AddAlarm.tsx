@@ -22,17 +22,16 @@ import {
   IonInput,
 } from '@ionic/react';
 import React, { useContext, useState } from 'react';
+import { useSelector } from 'react-redux';
 import { RouteComponentProps } from 'react-router';
 import { AlarmContext } from '../../contexts/AlarmContext';
 import { ALARM_TYPES } from '../../hooks/useAlarmStorage';
-import { Plugins } from '@capacitor/core';
+import { SetttingState } from '../../reducers/settingReducer';
 import {
   runAlarmEveryday,
   runAlarmOnce,
   runAlarmOnSpecificDay,
 } from '../../utils';
-
-const { LocalNotifications } = Plugins;
 
 interface AddAlarmProps extends RouteComponentProps {}
 
@@ -42,6 +41,9 @@ export const AddAlarm: React.FC<AddAlarmProps> = ({ history }) => {
   const [errMsg, setErrMsg] = useState<string>('');
   const [showAlert, setShowAlert] = useState<boolean>(false);
   const [days, setDay] = useState<string[]>([]);
+  const { timeFormat } = useSelector<SetttingState, SetttingState>(
+    (state) => state
+  );
   const { dispatch } = useContext(AlarmContext);
 
   function handleCancel() {
@@ -153,7 +155,7 @@ export const AddAlarm: React.FC<AddAlarmProps> = ({ history }) => {
             <IonItem>
               <IonLabel>add time</IonLabel>
               <IonDatetime
-                displayFormat='HH:mm '
+                displayFormat={timeFormat}
                 value={dateTimeValue}
                 placeholder='add time'
                 onIonChange={(e) => setDateTimeValue(e.detail.value!)}

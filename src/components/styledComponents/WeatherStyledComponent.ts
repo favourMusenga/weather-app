@@ -21,7 +21,7 @@ export const Deescription = styled.p`
 
 export const AvargeTemperature = styled.p`
   margin-top: 30px !important;
-  font-size: 3.5rem !important;
+  font-size: 3rem !important;
 `;
 
 export const OtherWeatherInfo = styled.div`

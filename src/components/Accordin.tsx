@@ -1,4 +1,6 @@
 import React, { useRef, useState } from 'react';
+import { useSelector } from 'react-redux';
+import { SetttingState } from '../reducers/settingReducer';
 import './accordin.css';
 
 interface AccordinProps {
@@ -17,6 +19,9 @@ const Accordin: React.FC<AccordinProps> = ({
 }) => {
   const btnRef = useRef<HTMLButtonElement>(null);
   const divRef = useRef<HTMLDivElement>(null);
+  const { temperatureFormat } = useSelector<SetttingState, SetttingState>(
+    (state) => state
+  );
 
   // the state to show the contains of the accordin
   const [hasHeight, setHasHeight] = useState<boolean>(false);
@@ -44,7 +49,9 @@ const Accordin: React.FC<AccordinProps> = ({
               <div className='info__icon mr-2'>
                 <i className='wi wi-thermometer' />
               </div>
-              <p className='info__text'>{temp} &deg; C</p>
+              <p className='info__text'>
+                {temp} &deg; {temperatureFormat === 'metric' ? 'C' : 'F'}
+              </p>
             </div>
           </div>
           <div className='info'>
@@ -62,7 +69,9 @@ const Accordin: React.FC<AccordinProps> = ({
               <div className='info__icon mr-2'>
                 <i className='wi wi-cloudy-windy' />
               </div>
-              <p className='info__text'>{windSpeed} knots</p>
+              <p className='info__text'>
+                {windSpeed} {temperatureFormat === 'metric' ? 'm/s' : 'mi/hr'}
+              </p>
             </div>
           </div>
 
@@ -72,7 +81,9 @@ const Accordin: React.FC<AccordinProps> = ({
               <div className='info__icon mr-2'>
                 <i className='wi wi-thermometer' />
               </div>
-              <p className='info__text'>{feelsLike} &deg; C</p>
+              <p className='info__text'>
+                {feelsLike} &deg; {temperatureFormat === 'metric' ? 'C' : 'F'}
+              </p>
             </div>
           </div>
         </div>

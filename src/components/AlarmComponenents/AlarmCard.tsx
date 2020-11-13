@@ -7,7 +7,9 @@ import {
 } from '@ionic/react';
 import { DateTime } from 'luxon';
 import React, { useEffect, useRef } from 'react';
+import { useSelector } from 'react-redux';
 import { alarmAction, ALARM_TYPES } from '../../hooks/useAlarmStorage';
+import { SetttingState } from '../../reducers/settingReducer';
 import {
   runAlarmEveryday,
   runAlarmOnce,
@@ -49,7 +51,10 @@ export const AlarmCard: React.FC<AlarmCardProps> = ({
   onIsCompleteChange,
 }) => {
   const cardRef = useRef(null);
-  const formatedTime = DateTime.fromJSDate(new Date(time)).toFormat('HH:mm');
+  const { timeFormat } = useSelector<SetttingState, SetttingState>(
+    (state) => state
+  );
+  const formatedTime = DateTime.fromJSDate(new Date(time)).toFormat(timeFormat);
   const daysInStringForm = [...days.map((day) => setNameOfDay(day))];
   const daysSelected =
     daysInStringForm.length === 0

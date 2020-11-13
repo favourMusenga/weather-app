@@ -1,7 +1,9 @@
 import { IonCard, IonCardContent, createGesture, Gesture } from '@ionic/react';
 import { DateTime } from 'luxon';
 import React, { useEffect, useState, useRef } from 'react';
+import { useSelector } from 'react-redux';
 import { TYPES, WorldTimeAction } from '../../hooks/useLocalStorage';
+import { SetttingState } from '../../reducers/settingReducer';
 import {
   City,
   CurrentDate,
@@ -40,8 +42,11 @@ export const WorldTimeCard: React.FC<WorldTimeCardProps> = ({
   worldTime: { city, id, timezone },
   dispatch,
 }) => {
+  const { timeFormat } = useSelector<SetttingState, SetttingState>(
+    (state) => state
+  );
   const [time, setTime] = useState<string>(
-    DateTime.local().setZone(timezone!).toFormat('HH:mm ')
+    DateTime.local().setZone(timezone!).toFormat(timeFormat)
   );
   const [date, setDate] = useState<string>(
     DateTime.local().setZone(timezone!).toFormat('EEE dd MMM yyyy')
@@ -55,7 +60,7 @@ export const WorldTimeCard: React.FC<WorldTimeCardProps> = ({
     let isMounted = true;
     if (isMounted) {
       setInterval(() => {
-        setTime(DateTime.local().setZone(timezone!).toFormat('HH:mm '));
+        setTime(DateTime.local().setZone(timezone!).toFormat(timeFormat));
       }, 1000);
       setDate(DateTime.local().setZone(timezone!).toFormat('EEE dd MMM yyyy'));
     }
