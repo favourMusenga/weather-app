@@ -9,12 +9,22 @@ export const AlarmContainer = styled.div`
 export const AlarmTime = styled.div`
   font-size: 1.5rem !important;
 `;
+export const AlarmName = styled.div`
+  font-size: 0.8rem !important;
+`;
 
-export const AlarmDateInfo = styled.div`
+export const AlarmDateInfo = styled.div<AlarmDateInfoType>`
   display: flex;
-  align-items: center;
+  align-items: ${({ direction }) =>
+    direction === 'row' ? 'center' : 'flex-start'};
+  flex-direction: ${({ direction }) =>
+    direction === 'row' ? 'row' : 'column'};
 `;
 
 export const AlarmDate = styled.p`
   margin-right: 10px !important;
 `;
+
+type AlarmDateInfoType = {
+  direction: 'row' | 'column';
+};

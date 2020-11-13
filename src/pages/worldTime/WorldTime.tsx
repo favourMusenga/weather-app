@@ -1,7 +1,7 @@
 import {
-  IonApp,
   IonContent,
   IonHeader,
+  IonPage,
   IonTitle,
   IonToolbar,
 } from '@ionic/react';
@@ -11,7 +11,7 @@ import { CurrentTime } from '../../components/worldTimeComponenents/CurrentTime'
 interface WorldTimeProps {}
 export const WorldTime: React.FC<WorldTimeProps> = () => {
   return (
-    <IonApp>
+    <IonPage>
       <IonHeader>
         <IonToolbar>
           <IonTitle>Local time</IonTitle>
@@ -20,6 +20,6 @@ export const WorldTime: React.FC<WorldTimeProps> = () => {
       <IonContent className='ion-padding'>
         <CurrentTime />
       </IonContent>
-    </IonApp>
+    </IonPage>
   );
 };

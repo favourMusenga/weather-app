@@ -1,9 +1,9 @@
 import React, { useContext } from 'react';
 import {
-  IonApp,
   IonContent,
   IonHeader,
   IonLoading,
+  IonPage,
   IonTitle,
   IonToolbar,
 } from '@ionic/react';
@@ -27,7 +27,7 @@ export const Weather: React.FC<WeatherProps> = () => {
   } = useContext(WeatherContext);
   const isOffline = !navigator.onLine;
   return (
-    <IonApp>
+    <IonPage>
       <IonHeader>
         <IonToolbar>
           <IonTitle>weather</IonTitle>
@@ -51,6 +51,6 @@ export const Weather: React.FC<WeatherProps> = () => {
         )}
         <ReactQueryDevtools initialIsOpen={false} />
       </IonContent>
-    </IonApp>
+    </IonPage>
   );
 };

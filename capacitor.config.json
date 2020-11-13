@@ -1,13 +1,17 @@
 {
-    "appId": "com.favourmusenga.weatherApp",
-    "appName": "weather app",
-    "bundledWebRuntime": false,
-    "npmClient": "npm",
-    "webDir": "build",
-    "plugins": {
-        "SplashScreen": {
-            "launchShowDuration": 0
-        }
+  "appId": "com.favourmusenga.weatherApp",
+  "appName": "weather app",
+  "bundledWebRuntime": false,
+  "npmClient": "npm",
+  "webDir": "build",
+  "plugins": {
+    "SplashScreen": {
+      "launchShowDuration": 0
     },
-    "cordova": {}
+    "LocalNotifications": {
+      "smallIcon": "Weather_app_ionic",
+      "sound": "Sweetheart.ogg"
+    }
+  },
+  "cordova": {}
 }

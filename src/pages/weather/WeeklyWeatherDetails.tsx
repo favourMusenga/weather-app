@@ -1,6 +1,5 @@
 import React, { useContext } from 'react';
 import {
-  IonApp,
   IonBackButton,
   IonButtons,
   IonCardContent,
@@ -11,6 +10,7 @@ import {
   IonToolbar,
   IonCard,
   IonCardHeader,
+  IonPage,
 } from '@ionic/react';
 import { TemperatureInfo } from '../../components/WeatherComponenents/TemperatureInfo';
 import { RouteComponentProps } from 'react-router';
@@ -38,7 +38,7 @@ export const WeeklyWeatherDetails: React.FC<WeeklyWeatherDetailsProps> = ({
     dt,
   } = dailyWeatherInfo[+match.params.id - 1];
   return (
-    <IonApp>
+    <IonPage>
       <IonHeader>
         <IonToolbar>
           <IonButtons slot='start'>
@@ -71,6 +71,6 @@ export const WeeklyWeatherDetails: React.FC<WeeklyWeatherDetailsProps> = ({
           </IonCardContent>
         </IonCard>
       </IonContent>
-    </IonApp>
+    </IonPage>
   );
 };

@@ -1,5 +1,4 @@
 import {
-  IonApp,
   IonButtons,
   IonContent,
   IonHeader,
@@ -12,6 +11,7 @@ import {
   IonCard,
   IonCardContent,
   IonAlert,
+  IonPage,
 } from '@ionic/react';
 import { add, closeOutline } from 'ionicons/icons';
 import React, { useState, useContext } from 'react';
@@ -96,7 +96,7 @@ export const AddNewTimeZone: React.FC<AddNewTimeZoneProps> = ({ history }) => {
     history.goBack();
   }
   return (
-    <IonApp>
+    <IonPage>
       <IonHeader>
         <IonToolbar>
           <IonTitle>add timezone</IonTitle>
@@ -121,7 +121,12 @@ export const AddNewTimeZone: React.FC<AddNewTimeZoneProps> = ({ history }) => {
       <IonContent>
         <IonCard className='ion-padding' style={{ height: '80%' }}>
           <IonCardContent>
-            <form className='d-flex flex-column justify-content-center align-items-center'>
+            <form
+              className='d-flex flex-column justify-content-center align-items-center'
+              onSubmit={(e) => {
+                e.preventDefault();
+                handleAddCilck();
+              }}>
               <label htmlFor='timeZoneInput'>enter timezone</label>
               <AutoSuggest
                 inputProps={{
@@ -171,6 +176,6 @@ export const AddNewTimeZone: React.FC<AddNewTimeZoneProps> = ({ history }) => {
           ]}
         />
       </IonContent>
-    </IonApp>
+    </IonPage>
   );
 };

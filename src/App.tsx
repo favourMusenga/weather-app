@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext, useEffect } from 'react';
 import { Redirect, Route } from 'react-router-dom';
 import {
   IonApp,
@@ -11,6 +11,8 @@ import {
 } from '@ionic/react';
 import { IonReactRouter } from '@ionic/react-router';
 import { alarm, time, sunny } from 'ionicons/icons';
+
+import { LocalNotification, Plugins } from '@capacitor/core';
 
 /* Core CSS required for Ionic components to work properly */
 import '@ionic/react/css/core.css';
@@ -41,52 +43,73 @@ import { WeeklyWeatherDetails } from './pages/weather/WeeklyWeatherDetails';
 import { WorldTimeList } from './pages/worldTime/WorldTimeList';
 import { AddNewTimeZone } from './pages/worldTime/AddNewTimeZone';
 import { AddAlarm } from './pages/alarm/AddAlarm';
+import { AlarmContext } from './contexts/AlarmContext';
+import { ALARM_TYPES } from './hooks/useAlarmStorage';
 
-const App: React.FC = () => (
-  <IonApp>
-    <IonReactRouter>
-      <IonTabs>
-        <IonRouterOutlet>
-         
-              <Route path='/Weather' component={Weather} exact={true} />
-              <Route
-                path='/WeeklyWeatherDetails/:id'
-                component={WeeklyWeatherDetails}
-              />
-              <Route
-                path='/CurrentWeatherDetails'
-                component={CurrentWeatherDetails}
-                exact={true}
-              />
-              <Route path='/WorldTime' component={WorldTime} exact={true} />
-              <Route path='/Alarm' component={Alarm} />
-              <Route path='/AddNewTimeZone' component={AddNewTimeZone} />
-              <Route path='/WorldTimeList' component={WorldTimeList} />
-              <Route path='/AddAlarm' component={AddAlarm} />
-              <Route
-                path='/'
-                render={() => <Redirect to='/Weather' />}
-                exact={true}
-              />
-            
-        </IonRouterOutlet>
-        <IonTabBar slot='bottom'>
-          <IonTabButton tab='tab1' href='/Weather'>
-            <IonIcon icon={sunny} />
-            <IonLabel>weather</IonLabel>
-          </IonTabButton>
-          <IonTabButton tab='tab2' href='/WorldTime'>
-            <IonIcon icon={time} />
-            <IonLabel>world time</IonLabel>
-          </IonTabButton>
-          <IonTabButton tab='tab3' href='/Alarm'>
-            <IonIcon icon={alarm} />
-            <IonLabel>alarm</IonLabel>
-          </IonTabButton>
-        </IonTabBar>
-      </IonTabs>
-    </IonReactRouter>
-  </IonApp>
-);
+const { LocalNotifications } = Plugins;
+
+const App: React.FC = () => {
+  const { dispatch, onIsCompleteChange } = useContext(AlarmContext);
+  useEffect(() => {
+    const requestPermission = async () => {
+      await LocalNotifications.requestPermission();
+    };
+    requestPermission();
+
+    LocalNotifications.addListener(
+      'localNotificationReceived',
+      (notification: LocalNotification) => {
+        const id = notification.extra.id;
+
+        onIsCompleteChange(+id);
+        dispatch({ type: ALARM_TYPES.COMPLETED, payload: { id: +id } });
+      }
+    );
+  }, [onIsCompleteChange, dispatch]);
+  return (
+    <IonApp>
+      <IonReactRouter>
+        <IonTabs>
+          <IonRouterOutlet>
+            <Route path='/Weather' component={Weather} exact={true} />
+            <Route
+              path='/WeeklyWeatherDetails/:id'
+              component={WeeklyWeatherDetails}
+            />
+            <Route
+              path='/CurrentWeatherDetails'
+              component={CurrentWeatherDetails}
+              exact={true}
+            />
+            <Route path='/WorldTime' component={WorldTime} exact={true} />
+            <Route path='/Alarm' component={Alarm} />
+            <Route path='/AddNewTimeZone' component={AddNewTimeZone} />
+            <Route path='/WorldTimeList' component={WorldTimeList} />
+            <Route path='/AddAlarm' component={AddAlarm} />
+            <Route
+              path='/'
+              render={() => <Redirect to='/Weather' />}
+              exact={true}
+            />
+          </IonRouterOutlet>
+          <IonTabBar slot='bottom'>
+            <IonTabButton tab='tab1' href='/Weather'>
+              <IonIcon icon={sunny} />
+              <IonLabel>weather</IonLabel>
+            </IonTabButton>
+            <IonTabButton tab='tab2' href='/WorldTime'>
+              <IonIcon icon={time} />
+              <IonLabel>world time</IonLabel>
+            </IonTabButton>
+            <IonTabButton tab='tab3' href='/Alarm'>
+              <IonIcon icon={alarm} />
+              <IonLabel>alarm</IonLabel>
+            </IonTabButton>
+          </IonTabBar>
+        </IonTabs>
+      </IonReactRouter>
+    </IonApp>
+  );
+};
 
 export default App;

@@ -9,6 +9,7 @@ import {
   dailyWeatherType,
   hourlyWeatherType,
 } from '../types/weatherType';
+
 export const WeatherContext = createContext<{
   dailyWeatherInfo: dailyWeatherType;
   currentWeatherinfo: currentweatherType;
@@ -29,23 +30,21 @@ export const WeatherContext = createContext<{
   refetch: (options): Promise<null> => new Promise((rev, reject) => null),
 });
 
+const API_KEY = process.env.REACT_APP_API_KEY;
+
 async function fetchWeatherInfo(
   key: string,
   latitude: string,
   longitude: string
 ) {
-  const api = `https://api.openweathermap.org/data/2.5/onecall?lat=${latitude}&lon=${longitude}&exclude=minutely&appid=8752acc8c0b1dd9bf0ae09efa7ce4262&units=metric`;
-  try {
-    if (latitude === '' || longitude === '') {
-      return null;
-    }
-    const json = await Axios(api);
-    console.log(latitude, longitude);
+  const api = `https://api.openweathermap.org/data/2.5/onecall?lat=${latitude}&lon=${longitude}&exclude=minutely&appid=${API_KEY}&units=metric`;
 
-    return json;
-  } catch (e) {
-    console.log(e);
+  if (latitude === '' || longitude === '') {
+    return null;
   }
+  const json = await Axios(api);
+
+  return json;
 }
 const WEATHER_ICON = {
   thunderstorm: 'wi-thinderstorm',
@@ -94,6 +93,8 @@ const WeatherContextProvider: React.FC = ({ children }) => {
     }
   );
   const weatherDataJson = data?.data;
+  console.log(data);
+
   if (weatherDataJson) {
     currentWeather = {
       temp: weatherDataJson.current.temp,

@@ -4,6 +4,7 @@ import {
   IonButtons,
   IonContent,
   IonHeader,
+  IonPage,
   IonTitle,
   IonToolbar,
 } from '@ionic/react';
@@ -16,7 +17,7 @@ interface WorldTimeListProps {}
 export const WorldTimeList: React.FC<WorldTimeListProps> = () => {
   const { userWorldTimeList, dispatch } = useContext(WorldTimeContext);
   return (
-    <IonApp>
+    <IonPage>
       <IonHeader>
         <IonToolbar>
           <IonTitle>world time</IonTitle>
@@ -35,6 +36,6 @@ export const WorldTimeList: React.FC<WorldTimeListProps> = () => {
         ))}
         <FloatBtn link='AddNewTimeZone' />
       </IonContent>
-    </IonApp>
+    </IonPage>
   );
 };
